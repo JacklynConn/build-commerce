@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/services/assets_manager.dart';
+import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -16,7 +17,9 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile Screen'),
+        title: const AppNameTextWidget(
+          fontSize: 20,
+        ),
         leading: Padding(
           padding: const EdgeInsets.only(left: 10.0),
           child: Image.asset(AssetsManager.shoppingCart),
