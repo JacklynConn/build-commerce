@@ -1,4 +1,7 @@
 # flutter_build_ecommerce
+16. Implement the light and dark theme with provider state management
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/88d1adf8-d4af-4d20-b583-101af2f70ae5)
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/acfdad48-d3c5-4fff-9b26-0ee3fb14dcaa)
 
 A new Flutter project.
 
