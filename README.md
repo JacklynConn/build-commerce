@@ -7,6 +7,10 @@
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/e8533391-6972-4a05-a391-29b8cccc3551)
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/2aca38c2-757d-41c4-9786-93806e2a2760)
 
+23. Create the Cart bottom sheet widget
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/d02b1369-645a-4a0b-bcb9-b8e5e0c859fc)
+
+
 
 
 A new Flutter project.
