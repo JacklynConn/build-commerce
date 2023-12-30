@@ -9,9 +9,8 @@
 
 23. Create the Cart bottom sheet widget
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/d02b1369-645a-4a0b-bcb9-b8e5e0c859fc)
-
-
-
+24. Create the Cart quantity dialogue
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/dc9d3b3b-2d1a-42d2-9594-48656d4df71e)
 
 A new Flutter project.
 
