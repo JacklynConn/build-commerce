@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/screens/cart/bottom_checkout.dart';
 import 'package:flutter_build_ecommerce/services/assets_manager.dart';
 import 'package:flutter_build_ecommerce/widgets/empty_bag.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
@@ -23,6 +24,7 @@ class CartScreen extends StatelessWidget {
             ),
           )
         : Scaffold(
+            bottomSheet: const CartBottomCheckOut(),
             appBar: AppBar(
               title: const TitleTextWidget(label: "Cart (5)"),
               leading: Padding(
