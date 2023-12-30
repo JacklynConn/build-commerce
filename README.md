@@ -4,7 +4,8 @@
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/acfdad48-d3c5-4fff-9b26-0ee3fb14dcaa)
 
 22. Create the cart screen when added product
-![image](https://github.com/JacklynConn/build-commerce/assets/148744079/e8533391-6972-4a05-a391-29b8cccc3551) ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/2aca38c2-757d-41c4-9786-93806e2a2760)
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/e8533391-6972-4a05-a391-29b8cccc3551)
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/2aca38c2-757d-41c4-9786-93806e2a2760)
 
 
 
