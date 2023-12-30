@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_build_ecommerce/screens/home_screen.dart';
+import 'package:flutter_build_ecommerce/root_screen.dart';
 import '/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import '/consts/theme_data.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: Styles.themeData(
               isDarkTheme: themeProvider.getIsDarkTheme, context: context),
-          home: const HomeScreen(),
+          home: const RootScreen(),
         );
       }),
     );
