@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
+import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import '/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -12,12 +14,15 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'Hello world!',
-            style: TextStyle(
-              fontSize: 50,
-              fontWeight: FontWeight.w800,
-            ),
+          const SubtitleWidget(
+            label: "Hi again!",
+            fontSize: 60,
+            color: Colors.red,
+          ),
+          TitleTextWidget(
+            label: "This is a title" * 10,
+            fontSize: 50,
+            maxLines: 2,
           ),
           ElevatedButton(
             onPressed: () {},

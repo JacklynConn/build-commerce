@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/screens/home_screen.dart';
 import '/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import '/consts/theme_data.dart';
-import '/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,22 +22,11 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Show Smart AR',
           debugShowCheckedModeBanner: false,
-          theme: Styles.themeData(isDarkTheme: themeProvider.getIsDarkTheme, context: context),
+          theme: Styles.themeData(
+              isDarkTheme: themeProvider.getIsDarkTheme, context: context),
           home: const HomeScreen(),
         );
       }),
     );
   }
 }
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-
-    );
-  }
-}
-

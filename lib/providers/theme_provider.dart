@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
 
 class ThemeProvider with ChangeNotifier {
   static const THEME_STATUS = "THEME_STATUS";
@@ -24,6 +25,7 @@ class ThemeProvider with ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _darkTheme = prefs.getBool(THEME_STATUS) ?? false;
     notifyListeners();
-    return _darkTheme;
+     return _darkTheme;
+
   }
 }
