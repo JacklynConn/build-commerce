@@ -17,6 +17,9 @@
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/50d5f7fb-e037-47a6-9c24-16f21a846197)
 27. Finish implementing the search screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/e752c129-1215-49f7-8dee-19fb015145cc)
+29. Implement the Swiper in the Home Screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/ca942a56-c759-4d63-bc5a-6749af988246)
+
 
 
 
