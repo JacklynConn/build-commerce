@@ -5,6 +5,8 @@ import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
+import '../../widgets/products/heart_btn.dart';
+
 class CartWidget extends StatelessWidget {
   const CartWidget({super.key});
 
@@ -48,13 +50,7 @@ class CartWidget extends StatelessWidget {
                                 color: Colors.red,
                               ),
                             ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                IconlyLight.heart,
-                                color: Colors.red,
-                              ),
-                            ),
+                            const HeartButtonWidget(),
                           ],
                         ),
                       ],
@@ -70,7 +66,7 @@ class CartWidget extends StatelessWidget {
                         OutlinedButton.icon(
                           style: OutlinedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                             side: const BorderSide(color: Colors.blue),
                           ),

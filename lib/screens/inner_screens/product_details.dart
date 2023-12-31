@@ -1,6 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/consts/app_constants.dart';
+import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../services/assets_manager.dart';
@@ -73,16 +74,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Material(
-                        color: Colors.teal.shade200,
-                        shape: const CircleBorder(),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            IconlyLight.heart,
-                            color: Colors.white,
-                          ),
-                        ),
+                      HeartButtonWidget(
+                        color: Colors.blue.shade300,
                       ),
                       const SizedBox(width: 10),
                       Expanded(

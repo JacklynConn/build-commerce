@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -43,43 +44,48 @@ class _ProductWidgetState extends State<ProductWidget> {
                   child: TitleTextWidget(
                     label: "Title" * 10,
                     maxLines: 2,
+                    fontSize: 18,
                   ),
                 ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(IconlyLight.heart),
-                  ),
+                const Flexible(
+                  flex: 2,
+                  child: HeartButtonWidget(),
                 ),
               ],
             ),
             const SizedBox(height: 15),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Flexible(
-                  flex: 3,
-                  child: SubtitleWidget(label: "166.5\$ "),
-                ),
-                Flexible(
-                  child: Material(
-                    borderRadius: BorderRadius.circular(16.0),
-                    color: Colors.lightBlue,
-                    child: InkWell(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Flexible(
+                    flex: 3,
+                    child: SubtitleWidget(label: "166.5\$ "),
+                  ),
+                  Flexible(
+                    child: Material(
                       borderRadius: BorderRadius.circular(16.0),
-                      splashColor: Colors.red,
-                      onTap: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(
-                          Icons.add_shopping_cart_rounded,
-                          size: 20,
+                      color: Colors.lightBlue,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(16.0),
+                        splashColor: Colors.red,
+                        onTap: () {},
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.add_shopping_cart_rounded,
+                            size: 20,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                  // SizedBox(
+                  //   width: 1,
+                  // ),
+                ],
+              ),
             ),
             const SizedBox(height: 10),
           ],
