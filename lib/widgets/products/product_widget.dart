@@ -62,7 +62,10 @@ class _ProductWidgetState extends State<ProductWidget> {
                       onTap: () {},
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.add_shopping_cart_rounded),
+                        child: Icon(
+                          Icons.add_shopping_cart_rounded,
+                          size: 20,
+                        ),
                       ),
                     ),
                   ),
