@@ -26,7 +26,13 @@
 32. Implement the product details screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/548ad324-abd2-46d3-a3e1-48897a3c9b5c)
 34. Implement the wishlist screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/f64dddf9-499b-49c6-91cc-e09b01fe1c31)
+35. Implement the viewed recently screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/28ba1e50-6ab8-4f16-b3d6-4c5751a688f2)
+36. Implement the error & warning dialog
 ![Uploading image.png…]()
+
+
 
 
 A new Flutter project.
