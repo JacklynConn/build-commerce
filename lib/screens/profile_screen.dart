@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/viewed_recently.dart';
 import 'package:flutter_build_ecommerce/services/assets_manager.dart';
+import 'package:flutter_build_ecommerce/services/my_app_method.dart';
 import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
@@ -140,12 +141,19 @@ class ProfileScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                onPressed: () {},
                 icon: const Icon(Icons.login, color: Colors.white),
                 label: const Text(
                   "Login",
                   style: TextStyle(color: Colors.white),
                 ),
+                onPressed: () async {
+                  await MyAppMethods.showErrorORWarningDialog(
+                    context: context,
+                    subtitle: "Are you sure?",
+                    fct: () {},
+                    isError: false,
+                  );
+                },
               ),
             ),
           ],
