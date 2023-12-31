@@ -13,6 +13,9 @@
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/dc9d3b3b-2d1a-42d2-9594-48656d4df71e)
 25. Implement the Cart badge
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/075a39d2-b77e-43c6-93f0-cd4389b8d8d5)
+26. Start implementing the search screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/50d5f7fb-e037-47a6-9c24-16f21a846197)
+
 
 
 A new Flutter project.
