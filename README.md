@@ -18,7 +18,10 @@
 27. Finish implementing the search screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/e752c129-1215-49f7-8dee-19fb015145cc)
 29. Implement the Swiper in the Home Screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/12448f79-5973-44d5-bfa4-1107b71a4581)
+30. Create the latest arrival widget in the Home Screen
 ![Uploading image.png…]()
+
 
 
 
