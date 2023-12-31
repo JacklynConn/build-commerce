@@ -6,20 +6,20 @@ import 'package:flutter_build_ecommerce/widgets/empty_bag.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import '../../widgets/products/product_widget.dart';
 
-class WishlistScreen extends StatelessWidget {
-  static const routeName = '/WishlistScreen';
+class ViewRecentlyScreen extends StatelessWidget {
+  static const routeName = '/ViewRecentlyScreen';
 
-  const WishlistScreen({super.key});
+  const ViewRecentlyScreen({super.key});
 
-  final bool isEmpty = true;
+  final bool isEmpty = false;
 
   @override
   Widget build(BuildContext context) {
     return isEmpty
         ? Scaffold(
             body: EmptyBagWidget(
-              imagePath: AssetsManager.bagWish,
-              title: "Your wishlist is empty",
+              imagePath: AssetsManager.shoppingBasket,
+              title: "Your viewed recently is empty",
               subtitle:
                   "Looks like you didn't add anything to your cart \ngo ahead and start shopping now",
               buttonText: "Shopp now",

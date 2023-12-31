@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/root_screen.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/product_details.dart';
+import 'package:flutter_build_ecommerce/screens/inner_screens/viewed_recently.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/wishlist.dart';
 import '/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
           routes: {
             ProductDetails.routeName: (context) => const ProductDetails(),
             WishlistScreen.routeName: (context) => const WishlistScreen(),
+            ViewRecentlyScreen.routeName: (context) => const ViewRecentlyScreen(),
           },
         );
       }),

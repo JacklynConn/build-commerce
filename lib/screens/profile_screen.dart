@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/screens/inner_screens/viewed_recently.dart';
 import 'package:flutter_build_ecommerce/services/assets_manager.dart';
 import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
@@ -89,14 +90,20 @@ class ProfileScreen extends StatelessWidget {
                   CustomListTile(
                     imagePath: AssetsManager.wishlistSvg,
                     text: "Wishlist",
-                    function: () {
-                      Navigator.pushNamed(context, WishlistScreen.routeName);
+                    function: () async {
+                      await Navigator.pushNamed(
+                          context, WishlistScreen.routeName);
                     },
                   ),
                   CustomListTile(
                     imagePath: AssetsManager.recent,
                     text: "Viewed recently",
-                    function: () {},
+                    function: () async {
+                      await Navigator.pushNamed(
+                        context,
+                        ViewRecentlyScreen.routeName,
+                      );
+                    },
                   ),
                   CustomListTile(
                     imagePath: AssetsManager.address,
