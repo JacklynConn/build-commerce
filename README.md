@@ -20,7 +20,10 @@
 29. Implement the Swiper in the Home Screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/12448f79-5973-44d5-bfa4-1107b71a4581)
 30. Create the latest arrival widget in the Home Screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/8180fdf9-cf1d-4646-81cc-5d420392a47e)
+31. Create the Categories widget in the Home Screen
 ![Uploading image.png…]()
+
 
 
 
