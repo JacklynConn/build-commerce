@@ -22,13 +22,9 @@
 30. Create the latest arrival widget in the Home Screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/8180fdf9-cf1d-4646-81cc-5d420392a47e)
 31. Create the Categories widget in the Home Screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/9e7a2b69-a2ef-4863-ac47-da35ef3f0507)
+32. Implement the product details screen
 ![Uploading image.png…]()
-
-
-
-
-
-
 
 
 
