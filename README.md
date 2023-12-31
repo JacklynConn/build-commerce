@@ -24,8 +24,9 @@
 31. Create the Categories widget in the Home Screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/9e7a2b69-a2ef-4863-ac47-da35ef3f0507)
 32. Implement the product details screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/548ad324-abd2-46d3-a3e1-48897a3c9b5c)
+34. Implement the wishlist screen
 ![Uploading image.png…]()
-
 
 
 A new Flutter project.
