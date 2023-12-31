@@ -1,6 +1,10 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/consts/app_constants.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
+import '../services/assets_manager.dart';
+import '../widgets/app_name_text.dart';
 import '/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -9,35 +13,52 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SubtitleWidget(
-            label: "Hi again!",
-            fontSize: 60,
-            color: Colors.red,
-          ),
-          TitleTextWidget(
-            label: "This is a title" * 10,
-            fontSize: 50,
-            maxLines: 2,
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Hello world'),
-          ),
-          SwitchListTile(
-            title: Text(
-              themeProvider.getIsDarkTheme ? 'Dark Theme' : 'Light Theme',
+      appBar: AppBar(
+        title: const AppNameTextWidget(
+          fontSize: 20,
+        ),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Image.asset(AssetsManager.shoppingCart),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: size.height * 0.24,
+              child: ClipRRect(
+                // borderRadius: const BorderRadius.only(
+                //   topLeft: Radius.circular(16),
+                //   topRight: Radius.circular(16),
+                // ),
+                child: Swiper(
+                  controller: SwiperController(),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Image.asset(
+                      AppConstants.bannersImages[index],
+                      fit: BoxFit.fill,
+                    );
+                  },
+                  autoplay: true,
+                  itemCount: AppConstants.bannersImages.length,
+                  pagination: const SwiperPagination(
+                    alignment: Alignment.bottomCenter,
+                    builder: DotSwiperPaginationBuilder(
+                      activeColor: Colors.red,
+                      color: Colors.white,
+                    ),
+                  ),
+                  // control: const SwiperControl(),
+                ),
+              ),
             ),
-            value: themeProvider.getIsDarkTheme,
-            onChanged: (value) {
-              themeProvider.setDarkTheme(themeValue: value);
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
