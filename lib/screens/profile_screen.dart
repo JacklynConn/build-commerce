@@ -7,6 +7,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/theme_provider.dart';
+import 'inner_screens/wishlist.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -88,7 +89,9 @@ class ProfileScreen extends StatelessWidget {
                   CustomListTile(
                     imagePath: AssetsManager.wishlistSvg,
                     text: "Wishlist",
-                    function: () {},
+                    function: () {
+                      Navigator.pushNamed(context, WishlistScreen.routeName);
+                    },
                   ),
                   CustomListTile(
                     imagePath: AssetsManager.recent,

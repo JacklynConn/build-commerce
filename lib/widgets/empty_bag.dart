@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 
-
 class EmptyBagWidget extends StatelessWidget {
   const EmptyBagWidget(
       {super.key,

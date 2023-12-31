@@ -2,9 +2,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/consts/app_constants.dart';
 import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 
-import '../../services/assets_manager.dart';
 import '../../widgets/app_name_text.dart';
 import '../../widgets/subtitle_text.dart';
 import '../../widgets/title_text.dart';

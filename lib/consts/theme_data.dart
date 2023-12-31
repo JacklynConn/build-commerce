@@ -31,9 +31,9 @@ class Styles {
         filled: true,
         contentPadding: const EdgeInsets.all(10),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             width: 1,
-           color: Colors.transparent,
+            color: Colors.transparent,
           ),
           borderRadius: BorderRadius.circular(8),
         ),
@@ -45,17 +45,13 @@ class Styles {
           borderRadius: BorderRadius.circular(8),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 1,
-            color: Theme.of(context).colorScheme.error
-          ),
+          borderSide:
+              BorderSide(width: 1, color: Theme.of(context).colorScheme.error),
           borderRadius: BorderRadius.circular(8),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 1,
-            color: Theme.of(context).colorScheme.error
-          ),
+          borderSide:
+              BorderSide(width: 1, color: Theme.of(context).colorScheme.error),
           borderRadius: BorderRadius.circular(8),
         ),
       ),

@@ -59,8 +59,8 @@ class _RootScreenState extends State<RootScreen> {
           ),
           NavigationDestination(
             icon: Badge(
-              backgroundColor: Colors.blue,
-              label: Text("6"),
+                backgroundColor: Colors.blue,
+                label: Text("6"),
                 child: Icon(IconlyLight.bag2)),
             label: 'Cart',
           ),

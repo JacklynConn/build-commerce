@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import '../../consts/app_constants.dart';
 import '../subtitle_text.dart';
 

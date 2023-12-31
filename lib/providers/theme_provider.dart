@@ -1,4 +1,3 @@
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
@@ -21,11 +20,10 @@ class ThemeProvider with ChangeNotifier {
   }
 
   /// Get theme from shared preferences
-  Future<bool> getTheme() async{
+  Future<bool> getTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _darkTheme = prefs.getBool(THEME_STATUS) ?? false;
     notifyListeners();
-     return _darkTheme;
-
+    return _darkTheme;
   }
 }
