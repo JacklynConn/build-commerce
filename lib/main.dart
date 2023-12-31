@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/root_screen.dart';
+import 'package:flutter_build_ecommerce/screens/inner_screens/product_details.dart';
 import '/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import '/consts/theme_data.dart';
@@ -25,6 +26,9 @@ class MyApp extends StatelessWidget {
           theme: Styles.themeData(
               isDarkTheme: themeProvider.getIsDarkTheme, context: context),
           home: const RootScreen(),
+          routes: {
+            '/ProductDetails': (context) => const ProductDetails(),
+          },
         );
       }),
     );

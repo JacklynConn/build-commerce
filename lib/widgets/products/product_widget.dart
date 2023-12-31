@@ -6,6 +6,7 @@ import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../consts/app_constants.dart';
+import '../../screens/inner_screens/product_details.dart';
 
 class ProductWidget extends StatefulWidget {
   const ProductWidget({super.key});
@@ -21,8 +22,8 @@ class _ProductWidgetState extends State<ProductWidget> {
     return Padding(
       padding: const EdgeInsets.all(3.0),
       child: GestureDetector(
-        onTap: () {
-          log("TODO Navigate to product details screen");
+        onTap: () async {
+          await Navigator.pushNamed(context, ProductDetails.routeName);
         },
         child: Column(
           children: [
@@ -37,7 +38,13 @@ class _ProductWidgetState extends State<ProductWidget> {
             const SizedBox(height: 15),
             Row(
               children: [
-                Flexible(flex: 5, child: TitleTextWidget(label: "Title" * 10, maxLines: 2,),),
+                Flexible(
+                  flex: 5,
+                  child: TitleTextWidget(
+                    label: "Title" * 10,
+                    maxLines: 2,
+                  ),
+                ),
                 Flexible(
                   child: IconButton(
                     onPressed: () {},
