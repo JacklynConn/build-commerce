@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/models/product_model.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import '../services/assets_manager.dart';
 import '../widgets/products/product_widget.dart';
@@ -76,9 +77,13 @@ class _SearchScreenState extends State<SearchScreen> {
               const SizedBox(height: 15),
               Expanded(
                 child: DynamicHeightGridView(
-                  itemCount: 100,
+                  itemCount: ProductModel.localProds.length,
                   builder: (context, index) {
-                    return const ProductWidget();
+                    return ProductWidget(
+                      image: ProductModel.localProds[index].productImage,
+                      title: ProductModel.localProds[index].productTitle,
+                      price: ProductModel.localProds[index].productPrice,
+                    );
                   },
                   crossAxisCount: 2,
                   // crossAxisSpacing: 10,
