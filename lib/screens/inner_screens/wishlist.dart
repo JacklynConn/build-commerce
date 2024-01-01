@@ -45,7 +45,7 @@ class WishlistScreen extends StatelessWidget {
             body: DynamicHeightGridView(
               itemCount: 100,
               builder: (context, index) {
-                return const ProductWidget();
+                return const ProductWidget(productId: "",);
               },
               crossAxisCount: 2,
               // crossAxisSpacing: 10,
