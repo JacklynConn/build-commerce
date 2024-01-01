@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/consts/my_validators.dart';
+import 'package:flutter_build_ecommerce/screens/auth/login.dart';
 import 'package:flutter_build_ecommerce/screens/auth/register.dart';
 import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
@@ -7,45 +8,57 @@ import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import '../../widgets/auth/google_btn.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const routeName = '/LoginScreen';
+class RegisterScreen extends StatefulWidget {
+  static const routeName = '/RegisterScreen';
 
-  const LoginScreen({super.key});
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  late TextEditingController _emailController;
-  late TextEditingController _passwordController;
-  late final FocusNode _emailFocusNode;
-  late final FocusNode _passwordFocusNode;
+class _RegisterScreenState extends State<RegisterScreen> {
+  late TextEditingController _nameController,
+      _emailController,
+      _passwordController,
+      _confirmPasswordController;
+  late final FocusNode _nameFocusNode,
+      _emailFocusNode,
+      _passwordFocusNode,
+      _confirmPasswordFocusNode;
   late final _formKey = GlobalKey<FormState>();
   bool obscureText = true;
 
   @override
   void initState() {
     super.initState();
+    _nameController = TextEditingController();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+    _confirmPasswordController = TextEditingController();
     // Focus Node
+    _nameFocusNode = FocusNode();
     _emailFocusNode = FocusNode();
     _passwordFocusNode = FocusNode();
+    _confirmPasswordFocusNode = FocusNode();
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
+    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
     // Focus Node
+    _nameFocusNode.dispose();
     _emailFocusNode.dispose();
     _passwordFocusNode.dispose();
+    _confirmPasswordFocusNode.dispose();
   }
 
-  Future<void> _loginFct() async {
+  Future<void> _registerFct() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
     if (isValid) {}
@@ -63,16 +76,39 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const SizedBox(height: 60.0),
                 const AppNameTextWidget(fontSize: 30),
-                const SizedBox(height: 30.0),
+                const SizedBox(height: 16.0),
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: TitleTextWidget(label: "Welcome Back!"),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitleTextWidget(label: "Welcome Back!"),
+                      SubtitleWidget(label: "Your welcome message"),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 16.0),
                 Form(
                   key: _formKey,
                   child: Column(
                     children: [
+                      TextFormField(
+                        controller: _nameController,
+                        focusNode: _nameFocusNode,
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.name,
+                        decoration: const InputDecoration(
+                          hintText: "Full Name",
+                          prefixIcon: Icon(IconlyLight.message),
+                        ),
+                        validator: (value) {
+                          return MyValidators.displayNameValidator(value);
+                        },
+                        onFieldSubmitted: (value) {
+                          FocusScope.of(context).requestFocus(_emailFocusNode);
+                        },
+                      ),
+                      const SizedBox(height: 16),
                       TextFormField(
                         controller: _emailController,
                         focusNode: _emailFocusNode,
@@ -94,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextFormField(
                         controller: _passwordController,
                         focusNode: _passwordFocusNode,
-                        textInputAction: TextInputAction.done,
+                        textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: obscureText,
                         decoration: InputDecoration(
@@ -115,20 +151,40 @@ class _LoginScreenState extends State<LoginScreen> {
                           return MyValidators.passwordValidator(value);
                         },
                         onFieldSubmitted: (value) {
-                          _loginFct();
+                          FocusScope.of(context)
+                              .requestFocus(_confirmPasswordFocusNode);
                         },
                       ),
                       const SizedBox(height: 16),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: const SubtitleWidget(
-                            label: "Forgot Password?",
-                            textDecoration: TextDecoration.underline,
-                            fontStyle: FontStyle.italic,
+                      TextFormField(
+                        controller: _confirmPasswordController,
+                        focusNode: _confirmPasswordFocusNode,
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: obscureText,
+                        decoration: InputDecoration(
+                          hintText: "**********",
+                          prefixIcon: const Icon(IconlyLight.lock),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                obscureText = !obscureText;
+                              });
+                            },
+                            icon: Icon(
+                              obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
                           ),
                         ),
+                        validator: (value) {
+                          return MyValidators.repeatPasswordValidator(
+                              value, _passwordController.text);
+                        },
+                        onFieldSubmitted: (value) {
+                          _registerFct();
+                        },
                       ),
                       const SizedBox(height: 16),
                       SizedBox(
@@ -142,59 +198,35 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          icon: const Icon(Icons.login, color: Colors.white),
+                          icon: const Icon(IconlyLight.addUser,
+                              color: Colors.white),
                           label: const Text(
-                            "Login",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                          onPressed: () async {
-                            _loginFct();
-                          },
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      const SubtitleWidget(label: "Or"),
-                      const SizedBox(height: 16),
-                      Row(
-                        children: [
-                          const GoogleButton(),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.all(10),
-                                backgroundColor: Colors.blue,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                              icon: const Icon(
-                                Icons.person,
-                                color: Colors.white,
-                              ),
-                              label: const Text(
-                                "Guest",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              onPressed: () async {},
+                            "Sign Up",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
                             ),
                           ),
-                        ],
+                          onPressed: () async {
+                            _registerFct();
+                          },
+                        ),
                       ),
                       const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const SubtitleWidget(label: "Don't have an account?"),
+                          const SubtitleWidget(
+                              label: "Already have an account?"),
                           TextButton(
                             child: const SubtitleWidget(
-                              label: "Sign Up",
+                              label: "Login",
                               textDecoration: TextDecoration.underline,
                               fontStyle: FontStyle.italic,
                             ),
                             onPressed: () {
-                              Navigator.pushNamed(
-                                  context, RegisterScreen.routeName);
+                              Navigator.of(context)
+                                  .pushNamed(LoginScreen.routeName);
                             },
                           ),
                         ],
