@@ -6,6 +6,7 @@ import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../services/my_app_method.dart';
+import '../../widgets/auth/google_btn.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -155,28 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 16),
                       Row(
                         children: [
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.all(10),
-                                backgroundColor: Colors.red,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                              icon: const Icon(
-                                Icons.g_mobiledata,
-                                color: Colors.white,
-                              ),
-                              label: const Text(
-                                "Sign in with Google",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              onPressed: () async {
-                                _loginFct();
-                              },
-                            ),
-                          ),
+                          const GoogleButton(),
                           const SizedBox(width: 16),
                           Expanded(
                             child: ElevatedButton.icon(
@@ -188,20 +168,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               icon: const Icon(
-                                Icons.facebook,
+                                Icons.person,
                                 color: Colors.white,
                               ),
                               label: const Text(
-                                "Facebook",
+                                "Guest",
                                 style: TextStyle(color: Colors.white),
                               ),
                               onPressed: () async {
-                                await MyAppMethods.showErrorORWarningDialog(
-                                  context: context,
-                                  subtitle: "Are you sure?",
-                                  fct: () {},
-                                  isError: false,
-                                );
                               },
                             ),
                           ),
