@@ -7,8 +7,9 @@ import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
-
 import '../providers/theme_provider.dart';
+import 'auth/login.dart';
+import 'inner_screens/orders/orders_screen.dart';
 import 'inner_screens/wishlist.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -86,7 +87,10 @@ class ProfileScreen extends StatelessWidget {
                   CustomListTile(
                     imagePath: AssetsManager.orderSvg,
                     text: "All orders",
-                    function: () {},
+                    function: () async {
+                      await Navigator.pushNamed(
+                          context, OrderScreenFree.routeName);
+                    },
                   ),
                   CustomListTile(
                     imagePath: AssetsManager.wishlistSvg,
@@ -147,12 +151,15 @@ class ProfileScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  await MyAppMethods.showErrorORWarningDialog(
-                    context: context,
-                    subtitle: "Are you sure?",
-                    fct: () {},
-                    isError: false,
-                  );
+                  await Navigator.pushNamed(context, LoginScreen.routeName);
+                  // await MyAppMethods.showErrorORWarningDialog(
+                  //   context: context,
+                  //   subtitle: "Are you sure?",
+                  //   fct: () {
+                  //
+                  //   },
+                  //   isError: false,
+                  // );
                 },
               ),
             ),
