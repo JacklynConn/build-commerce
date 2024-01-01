@@ -24,7 +24,8 @@ class ProductProvider with ChangeNotifier {
     return ctgList;
   }
 
-  List<ProductModel> searchQuery({required String searchText}) {
+  List<ProductModel> searchQuery(
+      {required String searchText, required List<ProductModel> passedList}) {
     List<ProductModel> searchList = _products
         .where((element) => element.productTitle
             .toLowerCase()
