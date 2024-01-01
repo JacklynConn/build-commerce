@@ -44,7 +44,10 @@
 42. Allow the user to pick up an image using Camera or Gallery
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/ed8ae170-8833-4433-aa19-4dcdeea542e9)
 43. Implement the Orders screen43. Implement the Orders screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/bb72223b-6342-4adb-b28e-906a37213124)
+44. Implement the Forgot Password Screen and Test the App
 ![Uploading image.png…]()
+
 
 
 
