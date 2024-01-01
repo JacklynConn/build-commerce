@@ -46,7 +46,10 @@
 43. Implement the Orders screen43. Implement the Orders screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/bb72223b-6342-4adb-b28e-906a37213124)
 44. Implement the Forgot Password Screen and Test the App
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/e748ef39-802e-40f9-8220-c167c1c79a45)
+47. Display the correct products on the Search Screen
 ![Uploading image.png…]()
+
 
 
 
