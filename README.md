@@ -52,7 +52,10 @@
 50. Display the correct product details in the Product Details Screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/f3c7ae17-44a8-4e3a-ac89-2cb0f6c6dc86)
 51. Display products by Category
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/baf1728e-d55d-48d1-8fa9-ca96e04d1db0)
+52. Allow the user to search for Products
 ![Uploading image.png…]()
+
 
 
 
