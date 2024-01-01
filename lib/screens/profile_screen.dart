@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/viewed_recently.dart';
 import 'package:flutter_build_ecommerce/services/assets_manager.dart';
-import 'package:flutter_build_ecommerce/services/my_app_method.dart';
 import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';

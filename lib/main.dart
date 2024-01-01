@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/providers/product_provider.dart';
 import 'package:flutter_build_ecommerce/root_screen.dart';
 import 'package:flutter_build_ecommerce/screens/auth/ForgotPasswordScreen.dart';
 import 'package:flutter_build_ecommerce/screens/auth/login.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
       ],
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
         return MaterialApp(
