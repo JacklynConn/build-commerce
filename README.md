@@ -40,7 +40,10 @@
 40. Implement the Profile Image Picker Widget
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/6e1a00bb-3e83-42bf-9b3e-828cd1462c07)
 41. Implement the Pick Image Dialog
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/062357fd-7617-47d3-a368-8afcf953c822)
+42. Allow the user to pick up an image using Camera or Gallery
 ![Uploading image.png…]()
+
 
 
 
