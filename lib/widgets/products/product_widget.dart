@@ -1,5 +1,6 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/providers/cart_provider.dart';
 import 'package:flutter_build_ecommerce/providers/product_provider.dart';
 import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
@@ -22,6 +23,9 @@ class _ProductWidgetState extends State<ProductWidget> {
     // final productModelProvider = Provider.of<ProductModel>(context);
     final productProvider = Provider.of<ProductProvider>(context);
     final getCurrProduct = productProvider.findByProdId(widget.productId);
+    // Cart Provider
+    final cartProvider = Provider.of<CartProvider>(context);
+
     Size size = MediaQuery.of(context).size;
     return getCurrProduct == null
         ? const SizedBox.shrink()
@@ -81,11 +85,22 @@ class _ProductWidgetState extends State<ProductWidget> {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(16.0),
                               splashColor: Colors.red,
-                              onTap: () {},
-                              child: const Padding(
-                                padding: EdgeInsets.all(8.0),
+                              onTap: () {
+                                if (cartProvider.isProductInCart(
+                                    productId: getCurrProduct.productId)) {
+                                  return;
+                                }
+                                cartProvider.addProductToCart(
+                                  productId: getCurrProduct.productId,
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
                                 child: Icon(
-                                  Icons.add_shopping_cart_rounded,
+                                  cartProvider.isProductInCart(
+                                          productId: getCurrProduct.productId)
+                                      ? Icons.check
+                                      : Icons.add_shopping_cart_rounded,
                                   size: 20,
                                   color: Colors.white,
                                 ),
