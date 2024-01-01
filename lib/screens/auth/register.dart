@@ -231,7 +231,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           _registerFct();
                         },
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       SizedBox(
                         width: double.infinity,
                         // height: 50,

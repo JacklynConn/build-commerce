@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/root_screen.dart';
+import 'package:flutter_build_ecommerce/screens/auth/ForgotPasswordScreen.dart';
 import 'package:flutter_build_ecommerce/screens/auth/login.dart';
 import 'package:flutter_build_ecommerce/screens/auth/register.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/orders/orders_screen.dart';
@@ -39,6 +40,8 @@ class MyApp extends StatelessWidget {
             LoginScreen.routeName: (context) => const LoginScreen(),
             RegisterScreen.routeName: (context) => const RegisterScreen(),
             OrderScreenFree.routeName: (context) => const OrderScreenFree(),
+            ForgotPasswordScreen.routeName: (context) =>
+                const ForgotPasswordScreen(),
           },
         );
       }),
