@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/root_screen.dart';
+import 'package:flutter_build_ecommerce/screens/auth/login.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/product_details.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/viewed_recently.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/wishlist.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: Styles.themeData(
               isDarkTheme: themeProvider.getIsDarkTheme, context: context),
-          home: const RootScreen(),
+          home: LoginScreen(),
           routes: {
             ProductDetails.routeName: (context) => const ProductDetails(),
             WishlistScreen.routeName: (context) => const WishlistScreen(),
