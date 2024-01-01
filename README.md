@@ -48,7 +48,10 @@
 44. Implement the Forgot Password Screen and Test the App
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/e748ef39-802e-40f9-8220-c167c1c79a45)
 47. Display the correct products on the Search Screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/4e1e122f-6f20-4882-972e-6c658fa44382)
+50. Display the correct product details in the Product Details Screen
 ![Uploading image.png…]()
+
 
 
 
