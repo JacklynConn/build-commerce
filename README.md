@@ -54,7 +54,10 @@
 51. Display products by Category
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/baf1728e-d55d-48d1-8fa9-ca96e04d1db0)
 52. Allow the user to search for Products
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/23d106bf-d7b2-44e1-b7c6-d56bf6d35861)
+53. Allow the user to search for Products in Categories
 ![Uploading image.png…]()
+
 
 
 
