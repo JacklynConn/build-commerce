@@ -36,7 +36,10 @@
 38. Implement the Sign in with google button widget
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/236a5464-1cb9-4628-b374-252d254e9777)
 39. Start Implementing the Register Screen
-40. ![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/3a7783f1-6540-4bd6-9ed4-316f5db94056)
+40. Implement the Profile Image Picker Widget
+![Uploading image.png…]()
+
 
 
 
