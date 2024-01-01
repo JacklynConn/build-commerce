@@ -50,6 +50,8 @@
 47. Display the correct products on the Search Screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/4e1e122f-6f20-4882-972e-6c658fa44382)
 50. Display the correct product details in the Product Details Screen
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/f3c7ae17-44a8-4e3a-ac89-2cb0f6c6dc86)
+51. Display products by Category
 ![Uploading image.png…]()
 
 
