@@ -56,7 +56,10 @@
 52. Allow the user to search for Products
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/23d106bf-d7b2-44e1-b7c6-d56bf6d35861)
 53. Allow the user to search for Products in Categories
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/ccd093c6-1380-4c38-8d2f-8addd44db027)
+54. Start with the Cart State Management
 ![Uploading image.png…]()
+
 
 
 
