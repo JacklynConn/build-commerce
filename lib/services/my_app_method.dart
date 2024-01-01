@@ -64,4 +64,60 @@ class MyAppMethods {
       },
     );
   }
+
+  static Future<void> imagePickerDialog({
+    required BuildContext context,
+    required cameraFCT,
+    required galleryFCT,
+    required removeFCT,
+  }) async {
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Center(
+            child: SubtitleWidget(
+              label: "Choose Option",
+            ),
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                TextButton.icon(
+                  onPressed: () {
+                    cameraFCT();
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  icon: const Icon(Icons.camera),
+                  label: const Text("Camera"),
+                ),
+                TextButton.icon(
+                  onPressed: () {
+                    galleryFCT();
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  icon: const Icon(Icons.image),
+                  label: const Text("Gallery"),
+                ),
+                TextButton.icon(
+                  onPressed: () {
+                    removeFCT();
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  icon: const Icon(Icons.remove),
+                  label: const Text("Remove"),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 }

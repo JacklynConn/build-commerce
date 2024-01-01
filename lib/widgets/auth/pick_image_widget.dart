@@ -36,10 +36,10 @@ class PickImageWidget extends StatelessWidget {
           top: 0,
           right: 0,
           child: Material(
-            borderRadius: BorderRadius.circular(16.0),
+            borderRadius: BorderRadius.circular(12.0),
             color: Colors.lightBlue,
             child: InkWell(
-              borderRadius: BorderRadius.circular(16.0),
+              borderRadius: BorderRadius.circular(12.0),
               splashColor: Colors.red,
               onTap: () {
                 function();
@@ -47,7 +47,7 @@ class PickImageWidget extends StatelessWidget {
               child: const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Icon(
-                  Icons.add_shopping_cart_rounded,
+                  Icons.add_a_photo_outlined,
                   color: Colors.white,
                   size: 20,
                 ),

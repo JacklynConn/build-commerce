@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/consts/my_validators.dart';
 import 'package:flutter_build_ecommerce/screens/auth/login.dart';
 import 'package:flutter_build_ecommerce/screens/auth/register.dart';
+import 'package:flutter_build_ecommerce/services/my_app_method.dart';
 import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
@@ -97,7 +98,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   width: size.width * 0.3,
                   child: PickImageWidget(
                     pickedImage: _pickedImage,
-                    function: () {},
+                    function: () async {
+                      await MyAppMethods.imagePickerDialog(
+                        context: context,
+                        cameraFCT: () {},
+                        galleryFCT: () {},
+                        removeFCT: () {},
+                      );
+                    },
                   ),
                 ),
                 const SizedBox(height: 16.0),
