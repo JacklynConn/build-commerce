@@ -32,7 +32,13 @@
 36. Implement the error & warning dialog
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/59dcac7e-7082-4751-af09-f41456a36e27)
 37. Implement the login screen design
-![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/2ae4239f-30c4-43c6-80e1-2eb7f9c41594)
+38. Implement the Sign in with google button widget
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/236a5464-1cb9-4628-b374-252d254e9777)
+39. Start Implementing the Register Screen
+40. ![Uploading image.png…]()
+
+
 
 
 
