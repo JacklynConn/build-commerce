@@ -9,11 +9,21 @@ class ProductProvider with ChangeNotifier {
   }
 
   ProductModel? findByProdId(String productId) {
-    if(_products.where((element) => element.productId == productId).isEmpty){
+    if (_products.where((element) => element.productId == productId).isEmpty) {
       return null;
     }
-      return _products.firstWhere((element) => element.productId == productId);
+    return _products.firstWhere((element) => element.productId == productId);
   }
+
+  List<ProductModel> findByCategory({required String ctgName}) {
+    List<ProductModel> ctgList = _products
+        .where((element) => element.productCategory
+            .toLowerCase()
+            .contains(ctgName.toLowerCase()))
+        .toList();
+    return ctgList;
+  }
+
   final List<ProductModel> _products = [
     // Phones
     ProductModel(

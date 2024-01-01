@@ -8,6 +8,7 @@ import 'package:flutter_build_ecommerce/screens/inner_screens/orders/orders_scre
 import 'package:flutter_build_ecommerce/screens/inner_screens/product_details.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/viewed_recently.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/wishlist.dart';
+import 'package:flutter_build_ecommerce/screens/search_screen.dart';
 import '/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import '/consts/theme_data.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
             OrderScreenFree.routeName: (context) => const OrderScreenFree(),
             ForgotPasswordScreen.routeName: (context) =>
                 const ForgotPasswordScreen(),
+            SearchScreen.routeName: (context) => const SearchScreen(),
           },
         );
       }),
