@@ -6,7 +6,9 @@ import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import '../../widgets/auth/google_btn.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../widgets/auth/pick_image_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const routeName = '/RegisterScreen';
@@ -28,6 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _confirmPasswordFocusNode;
   late final _formKey = GlobalKey<FormState>();
   bool obscureText = true;
+  XFile? _pickedImage;
 
   @override
   void initState() {
@@ -66,6 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -85,6 +89,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       TitleTextWidget(label: "Welcome Back!"),
                       SubtitleWidget(label: "Your welcome message"),
                     ],
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                SizedBox(
+                  height: size.width * 0.3,
+                  width: size.width * 0.3,
+                  child: PickImageWidget(
+                    pickedImage: _pickedImage,
+                    function: () {},
                   ),
                 ),
                 const SizedBox(height: 16.0),
