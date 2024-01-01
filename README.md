@@ -30,7 +30,10 @@
 35. Implement the viewed recently screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/28ba1e50-6ab8-4f16-b3d6-4c5751a688f2)
 36. Implement the error & warning dialog
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/59dcac7e-7082-4751-af09-f41456a36e27)
+37. Implement the login screen design
 ![Uploading image.png…]()
+
 
 
 
