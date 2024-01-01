@@ -34,6 +34,8 @@ class _SearchScreenState extends State<SearchScreen> {
     searchTextController.dispose();
   }
 
+  List<ProductModel> productListSearch = [];
+
   @override
   Widget build(BuildContext context) {
     final productProvider = Provider.of<ProductProvider>(context);
@@ -87,21 +89,41 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                       ),
                       onChanged: (value) {
-                        log(searchTextController.text);
+                        setState(() {
+                          productListSearch = productProvider.searchQuery(
+                            searchText: searchTextController.text,
+                          );
+                        });
                       },
                       onSubmitted: (value) {
-                        log(searchTextController.text);
+                        setState(() {
+                          productListSearch = productProvider.searchQuery(
+                            searchText: searchTextController.text,
+                          );
+                        });
                       },
                     ),
                     const SizedBox(height: 15),
+                    if (searchTextController.text.isNotEmpty &&
+                        productListSearch.isEmpty) ...[
+                      const Center(
+                          child: TitleTextWidget(
+                        label: "No result found",
+                        fontSize: 40,
+                      ))
+                    ],
                     Expanded(
                       child: DynamicHeightGridView(
-                        itemCount: productsList.length,
+                        itemCount: searchTextController.text.isNotEmpty
+                            ? productListSearch.length
+                            : productsList.length,
                         builder: (context, index) {
                           return ChangeNotifierProvider.value(
                             value: productsList[index],
                             child: ProductWidget(
-                              productId: productsList[index].productId,
+                              productId: searchTextController.text.isNotEmpty
+                                  ? productListSearch[index].productId
+                                  : productsList[index].productId,
                             ),
                           );
                         },
