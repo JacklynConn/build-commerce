@@ -38,7 +38,10 @@
 39. Start Implementing the Register Screen
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/3a7783f1-6540-4bd6-9ed4-316f5db94056)
 40. Implement the Profile Image Picker Widget
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/6e1a00bb-3e83-42bf-9b3e-828cd1462c07)
+41. Implement the Pick Image Dialog
 ![Uploading image.png…]()
+
 
 
 
