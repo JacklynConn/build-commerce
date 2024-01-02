@@ -62,10 +62,17 @@
 55. Display the added product in the Cart
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/11326d1d-f9d1-4a39-a52f-b204f30bd243)
 56. Allow the user to update Cart Item Quantity
-![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/f109191a-b3a5-40a6-a5ae-cb50de080542)
 57. Finalize the Cart State Management allow the user to delete items clear cart
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/197b5162-4fbf-4098-89f7-2c27a01221cd)
+![Uploading image.png…]()
+58. Displaying the latest arrival products
+![Uploading image.png…]()
+59. Implement the Wishlist State management
 ![Uploading image.png…]()
 ![Uploading image.png…]()
+
+
 
 
 A new Flutter project.
