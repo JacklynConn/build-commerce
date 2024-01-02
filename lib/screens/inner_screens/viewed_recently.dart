@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/services/assets_manager.dart';
 import 'package:flutter_build_ecommerce/widgets/empty_bag.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
+import 'package:provider/provider.dart';
+import '../../providers/viewed_prod_provider.dart';
 import '../../widgets/products/product_widget.dart';
 
 class ViewRecentlyScreen extends StatelessWidget {
@@ -15,7 +17,8 @@ class ViewRecentlyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isEmpty
+    final viewedProvider = Provider.of<ViewedProdProvider>(context);
+    return viewedProvider.getProductItems.isEmpty
         ? Scaffold(
             body: EmptyBagWidget(
               imagePath: AssetsManager.shoppingBasket,
@@ -27,7 +30,10 @@ class ViewRecentlyScreen extends StatelessWidget {
           )
         : Scaffold(
             appBar: AppBar(
-              title: const TitleTextWidget(label: "Viewed Recently (5)"),
+              title: TitleTextWidget(
+                label:
+                    "Viewed Recently (${viewedProvider.getProductItems.length})",
+              ),
               leading: Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Image.asset(AssetsManager.shoppingCart),
@@ -43,10 +49,15 @@ class ViewRecentlyScreen extends StatelessWidget {
               ],
             ),
             body: DynamicHeightGridView(
-              itemCount: 100,
+              itemCount: viewedProvider.getProductItems.length,
               builder: (context, index) {
-                return const ProductWidget(
-                  productId: "",
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ProductWidget(
+                    productId: viewedProvider.getProductItems.values
+                        .toList()[index]
+                        .productId,
+                  ),
                 );
               },
               crossAxisCount: 2,

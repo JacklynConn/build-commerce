@@ -6,6 +6,7 @@ import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:provider/provider.dart';
+import '../../providers/viewed_prod_provider.dart';
 import '../../screens/inner_screens/product_details.dart';
 
 class ProductWidget extends StatefulWidget {
@@ -25,6 +26,7 @@ class _ProductWidgetState extends State<ProductWidget> {
     final getCurrProduct = productProvider.findByProdId(widget.productId);
     // Cart Provider
     final cartProvider = Provider.of<CartProvider>(context);
+    final viewedProvider = Provider.of<ViewedProdProvider>(context);
 
     Size size = MediaQuery.of(context).size;
     return getCurrProduct == null
@@ -33,6 +35,9 @@ class _ProductWidgetState extends State<ProductWidget> {
             padding: const EdgeInsets.all(3.0),
             child: GestureDetector(
               onTap: () async {
+                viewedProvider.addProductToHistory(
+                  productId: getCurrProduct.productId,
+                );
                 await Navigator.pushNamed(
                   context,
                   ProductDetails.routeName,

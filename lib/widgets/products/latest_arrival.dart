@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/providers/viewed_prod_provider.dart';
+import 'package:flutter_build_ecommerce/screens/inner_screens/product_details.dart';
 import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
 import 'package:provider/provider.dart';
 import '../../consts/app_constants.dart';
@@ -14,13 +16,19 @@ class LatestArrivalProductsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productModel = Provider.of<ProductModel>(context);
+    final viewedProvider = Provider.of<ViewedProdProvider>(context);
 
     Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {
-          log("TODO Navigate to product details screen");
+        onTap: () async {
+          viewedProvider.addProductToHistory(productId: productModel.productId);
+          await Navigator.pushNamed(
+            context,
+            ProductDetails.routeName,
+            arguments: productModel.productId,
+          );
         },
         child: SizedBox(
           width: size.width * 0.45,

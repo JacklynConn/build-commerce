@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/providers/cart_provider.dart';
 import 'package:flutter_build_ecommerce/providers/product_provider.dart';
+import 'package:flutter_build_ecommerce/providers/viewed_prod_provider.dart';
 import 'package:flutter_build_ecommerce/providers/wishlist_provider.dart';
 import 'package:flutter_build_ecommerce/root_screen.dart';
 import 'package:flutter_build_ecommerce/screens/auth/ForgotPasswordScreen.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProductProvider()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => WishlistProvider()),
+        ChangeNotifierProvider(create: (_) => ViewedProdProvider()),
       ],
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
         return MaterialApp(
