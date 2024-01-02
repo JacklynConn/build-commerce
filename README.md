@@ -58,9 +58,12 @@
 53. Allow the user to search for Products in Categories
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/ccd093c6-1380-4c38-8d2f-8addd44db027)
 54. Start with the Cart State Management
-![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/b606f545-63f0-44ec-bcf3-ed220cbc81a0)
 55. Display the added product in the Cart
 ![Uploading image.png…]()
+56. Allow the user to update Cart Item Quantity
+![Uploading image.png…]()
+
 
 
 
