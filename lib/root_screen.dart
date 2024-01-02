@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/providers/cart_provider.dart';
 import 'package:flutter_build_ecommerce/screens/cart/cart_screen.dart';
 import 'package:flutter_build_ecommerce/screens/home_screen.dart';
 import 'package:flutter_build_ecommerce/screens/profile_screen.dart';
 import 'package:flutter_build_ecommerce/screens/search_screen.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:provider/provider.dart';
 
 class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -31,6 +33,7 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       body: PageView(
         controller: controller,
@@ -48,23 +51,24 @@ class _RootScreenState extends State<RootScreen> {
           });
           controller.jumpToPage(index);
         },
-        destinations: const [
-          NavigationDestination(
+        destinations: [
+          const NavigationDestination(
             icon: Icon(IconlyLight.home),
             label: 'Home',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(IconlyLight.search),
             label: 'Search',
           ),
           NavigationDestination(
             icon: Badge(
-                backgroundColor: Colors.blue,
-                label: Text("6"),
-                child: Icon(IconlyLight.bag2)),
+              backgroundColor: Colors.blue,
+              label: Text("${cartProvider.getCartItems.length}"),
+              child: const Icon(IconlyLight.bag2),
+            ),
             label: 'Cart',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(IconlyLight.profile),
             label: 'Profile',
           ),

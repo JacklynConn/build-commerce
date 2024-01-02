@@ -26,10 +26,10 @@ class CategoryRoundedWidget extends StatelessWidget {
             height: 50,
             width: 50,
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 5),
           SubtitleWidget(
             label: name,
-            fontSize: 18,
+            fontSize: 15,
             // fontWeight: FontWeight.bold,
           )
         ],

@@ -68,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TitleTextWidget(label: "Mak Mach"),
-                      SubtitleWidget(label: "coding.with.makmach@gmail.com"),
+                      SubtitleWidget(label: "makmachksp1122@gmail.com", ),
                     ],
                   ),
                 ],

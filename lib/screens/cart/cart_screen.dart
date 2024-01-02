@@ -3,7 +3,9 @@ import 'package:flutter_build_ecommerce/screens/cart/bottom_checkout.dart';
 import 'package:flutter_build_ecommerce/services/assets_manager.dart';
 import 'package:flutter_build_ecommerce/widgets/empty_bag.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/cart_provider.dart';
 import 'cart_widget.dart';
 
 class CartScreen extends StatelessWidget {
@@ -13,7 +15,8 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isEmpty
+    final cartProvider = Provider.of<CartProvider>(context);
+    return cartProvider.getCartItems.isEmpty
         ? Scaffold(
             body: EmptyBagWidget(
               imagePath: AssetsManager.shoppingBasket,
@@ -26,7 +29,9 @@ class CartScreen extends StatelessWidget {
         : Scaffold(
             bottomSheet: const CartBottomCheckOut(),
             appBar: AppBar(
-              title: const TitleTextWidget(label: "Cart (5)"),
+              title: TitleTextWidget(
+                label: "Cart (${cartProvider.getCartItems.length})",
+              ),
               leading: Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Image.asset(AssetsManager.shoppingCart),
@@ -42,9 +47,12 @@ class CartScreen extends StatelessWidget {
               ],
             ),
             body: ListView.builder(
-              itemCount: 10,
+              itemCount: cartProvider.getCartItems.length,
               itemBuilder: (context, index) {
-                return const CartWidget();
+                return ChangeNotifierProvider.value(
+                  value: cartProvider.getCartItems.values.toList()[index],
+                  child: const CartWidget(),
+                );
               },
             ),
           );
