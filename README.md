@@ -65,12 +65,15 @@
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/f109191a-b3a5-40a6-a5ae-cb50de080542)
 57. Finalize the Cart State Management allow the user to delete items clear cart
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/197b5162-4fbf-4098-89f7-2c27a01221cd)
-![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/fe331963-b1ec-466d-a942-7c2baf9a34ce)
 58. Displaying the latest arrival products
 ![Uploading image.png…]()
 59. Implement the Wishlist State management
 ![Uploading image.png…]()
 ![Uploading image.png…]()
+60. Finish the viewed recently product State management
+![Uploading image.png…]()
+
 
 
 
