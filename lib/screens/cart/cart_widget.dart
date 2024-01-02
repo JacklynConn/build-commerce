@@ -101,9 +101,16 @@ class CartWidget extends StatelessWidget {
                                     },
                                   );
                                 },
-                                icon: const Icon(IconlyLight.arrowDown2),
+                                icon: const Icon(
+                                  IconlyLight.arrowDown2,
+                                  color: Colors.blue,
+                                ),
                                 label: Text(
                                   "Qty: ${cartModelProvider.quantity}",
+                                  style: const TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],

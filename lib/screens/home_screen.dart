@@ -4,6 +4,8 @@ import 'package:flutter_build_ecommerce/consts/app_constants.dart';
 import 'package:flutter_build_ecommerce/widgets/products/ctg_rounded_widget.dart';
 import 'package:flutter_build_ecommerce/widgets/products/latest_arrival.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
+import 'package:provider/provider.dart';
+import '../providers/product_provider.dart';
 import '../services/assets_manager.dart';
 import '../widgets/app_name_text.dart';
 
@@ -12,6 +14,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productProvider = Provider.of<ProductProvider>(context);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -69,7 +72,10 @@ class HomeScreen extends StatelessWidget {
                   itemCount: 10,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return const LatestArrivalProductsWidget();
+                    return ChangeNotifierProvider.value(
+                      value: productProvider.getProducts[index],
+                      child: const LatestArrivalProductsWidget(),
+                    );
                   },
                 ),
               ),

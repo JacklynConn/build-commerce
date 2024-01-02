@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
+import 'package:provider/provider.dart';
 import '../../consts/app_constants.dart';
+import '../../models/product_model.dart';
 import '../subtitle_text.dart';
 
 class LatestArrivalProductsWidget extends StatelessWidget {
@@ -11,6 +13,8 @@ class LatestArrivalProductsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productModel = Provider.of<ProductModel>(context);
+
     Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -27,7 +31,7 @@ class LatestArrivalProductsWidget extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: FancyShimmerImage(
-                    imageUrl: AppConstants.productImageUrl,
+                    imageUrl: productModel.productImage,
                     width: size.width * 28,
                     height: size.width * 0.28,
                   ),
@@ -38,7 +42,7 @@ class LatestArrivalProductsWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "Title" * 10,
+                      productModel.productTitle,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -56,9 +60,9 @@ class LatestArrivalProductsWidget extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const FittedBox(
+                    FittedBox(
                       child: SubtitleWidget(
-                        label: "166.5\$ ",
+                        label: "${productModel.productPrice}\$ ",
                         color: Colors.blue,
                       ),
                     ),
