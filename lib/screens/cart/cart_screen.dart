@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/screens/cart/bottom_checkout.dart';
 import 'package:flutter_build_ecommerce/services/assets_manager.dart';
+import 'package:flutter_build_ecommerce/services/my_app_method.dart';
 import 'package:flutter_build_ecommerce/widgets/empty_bag.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +39,15 @@ class CartScreen extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    MyAppMethods.showErrorORWarningDialog(
+                      isError: false,
+                        context: context,
+                        subtitle: "Remove items",
+                        fct: () {
+                          cartProvider.clearLocalCart();
+                        });
+                  },
                   icon: const Icon(
                     Icons.delete_forever_rounded,
                     color: Colors.red,

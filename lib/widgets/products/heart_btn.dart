@@ -29,6 +29,7 @@ class _HeartButtonWidgetState extends State<HeartButtonWidget> {
         icon: Icon(
           IconlyLight.heart,
           size: widget.size,
+          color: Colors.white,
         ),
       ),
     );

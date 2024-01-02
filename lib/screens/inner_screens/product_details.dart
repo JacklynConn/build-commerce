@@ -4,6 +4,7 @@ import 'package:flutter_build_ecommerce/consts/app_constants.dart';
 import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/cart_provider.dart';
 import '../../providers/product_provider.dart';
 import '../../widgets/app_name_text.dart';
 import '../../widgets/subtitle_text.dart';
@@ -25,6 +26,9 @@ class _ProductDetailsState extends State<ProductDetails> {
         Provider.of<ProductProvider>(context, listen: false);
     final productId = ModalRoute.of(context)!.settings.arguments as String;
     final getCurrProduct = productProvider.findByProdId(productId);
+
+    final cartProvider = Provider.of<CartProvider>(context);
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -95,14 +99,31 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         borderRadius: BorderRadius.circular(30),
                                       ),
                                     ),
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.add_shopping_cart,
+                                    onPressed: () {
+                                      if (cartProvider.isProductInCart(
+                                          productId:
+                                              getCurrProduct.productId)) {
+                                        return;
+                                      }
+                                      cartProvider.addProductToCart(
+                                        productId: getCurrProduct.productId,
+                                      );
+                                    },
+                                    icon: Icon(
+                                      cartProvider.isProductInCart(
+                                        productId: getCurrProduct.productId,
+                                      )
+                                          ? Icons.check
+                                          : Icons.add_shopping_cart_rounded,
                                       color: Colors.white,
                                     ),
-                                    label: const Text(
-                                      "Add to cart",
-                                      style: TextStyle(color: Colors.white),
+                                    label: Text(
+                                      cartProvider.isProductInCart(
+                                        productId: getCurrProduct.productId,
+                                      )
+                                          ? "In cart"
+                                          : "Add to cart",
+                                      style: const TextStyle(color: Colors.white),
                                     ),
                                   ),
                                 ),
