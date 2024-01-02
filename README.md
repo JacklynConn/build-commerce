@@ -66,6 +66,9 @@
 57. Finalize the Cart State Management allow the user to delete items clear cart
 ![Uploading image.png…]()
 ![Uploading image.png…]()
+58. Displaying the latest arrival products
+![Uploading image.png…]()
+
 
 
 A new Flutter project.
