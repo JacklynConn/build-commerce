@@ -59,6 +59,8 @@
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/ccd093c6-1380-4c38-8d2f-8addd44db027)
 54. Start with the Cart State Management
 ![Uploading image.png…]()
+55. Display the added product in the Cart
+![Uploading image.png…]()
 
 
 
