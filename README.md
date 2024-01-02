@@ -60,25 +60,12 @@
 54. Start with the Cart State Management
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/b606f545-63f0-44ec-bcf3-ed220cbc81a0)
 55. Display the added product in the Cart
-![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/11326d1d-f9d1-4a39-a52f-b204f30bd243)
 56. Allow the user to update Cart Item Quantity
 ![Uploading image.png…]()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+57. Finalize the Cart State Management allow the user to delete items clear cart
+![Uploading image.png…]()
+![Uploading image.png…]()
 
 
 A new Flutter project.
