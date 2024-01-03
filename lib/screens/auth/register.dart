@@ -1,14 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_build_ecommerce/consts/my_validators.dart';
-import 'package:flutter_build_ecommerce/screens/auth/login.dart';
-import 'package:flutter_build_ecommerce/screens/auth/register.dart';
-import 'package:flutter_build_ecommerce/services/my_app_method.dart';
-import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
-import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
-import 'package:flutter_build_ecommerce/widgets/title_text.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '/consts/my_validators.dart';
+import '/screens/auth/login.dart';
+import '/services/my_app_method.dart';
+import '/widgets/app_name_text.dart';
+import '/widgets/subtitle_text.dart';
+import '/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../widgets/auth/pick_image_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -32,6 +32,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   late final _formKey = GlobalKey<FormState>();
   bool obscureText = true;
   XFile? _pickedImage;
+  bool isLoading = false;
+  final auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -66,13 +68,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
     if (isValid) {
-      // _formKey.currentState!.save();
-      if (_pickedImage == null) {
+      _formKey.currentState!.save();
+      // if (_pickedImage == null) {
+      //   await MyAppMethods.showErrorORWarningDialog(
+      //     context: context,
+      //     subtitle: "Make sure to pick up an image",
+      //     fct: () {},
+      //   );
+      // }
+      try {
+        setState(() {
+          isLoading = true;
+        });
+        await auth.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
+        Fluttertoast.showToast(
+          msg: "An account has been created",
+          toastLength: Toast.LENGTH_SHORT,
+          textColor: Colors.white,
+        );
+      } on FirebaseAuthException catch (error) {
         await MyAppMethods.showErrorORWarningDialog(
           context: context,
-          subtitle: "Make sure to pick up an image",
+          subtitle: "An error has been occurred ${error.message}",
           fct: () {},
         );
+      } catch (error) {
+        await MyAppMethods.showErrorORWarningDialog(
+          context: context,
+          subtitle: "An error has been occurred $error",
+          fct: () {},
+        );
+      } finally {
+        setState(() {
+          isLoading = false;
+        });
       }
     }
   }
