@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +5,6 @@ import 'package:flutter_build_ecommerce/providers/viewed_prod_provider.dart';
 import 'package:flutter_build_ecommerce/screens/inner_screens/product_details.dart';
 import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
 import 'package:provider/provider.dart';
-import '../../consts/app_constants.dart';
 import '../../models/product_model.dart';
 import '../subtitle_text.dart';
 

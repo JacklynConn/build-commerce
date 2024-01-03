@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "162607150888",
+    "project_id": "shopsmart-dd03f",
+    "storage_bucket": "shopsmart-dd03f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162607150888:android:b54e696839b77f10d0421d",
+        "android_client_info": {
+          "package_name": "com.makmach.ecommerce_shop.flutter_build_ecommerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD7z3ACf12i727q_jiMCwgYD0c-nZEFKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
