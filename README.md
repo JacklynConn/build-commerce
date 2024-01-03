@@ -67,12 +67,15 @@
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/197b5162-4fbf-4098-89f7-2c27a01221cd)
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/fe331963-b1ec-466d-a942-7c2baf9a34ce)
 58. Displaying the latest arrival products
-![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/27dac2dc-ab3c-494e-b3ba-0109ca768ed1)
 59. Implement the Wishlist State management
 ![Uploading image.png…]()
 ![Uploading image.png…]()
 60. Finish the viewed recently product State management
 ![Uploading image.png…]()
+68. Allow the user to Register with error handling
+![Uploading image.png…]()
+
 
 
 
