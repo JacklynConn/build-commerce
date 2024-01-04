@@ -70,13 +70,16 @@
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/27dac2dc-ab3c-494e-b3ba-0109ca768ed1)
 59. Implement the Wishlist State management
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/0cd1197b-85bf-42e1-8122-85f46d54a1ec)
-![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/ab015593-1377-41f0-9d36-ad48eba605dc)
 60. Finish the viewed recently product State management
 ![Uploading image.png…]()
 68. Allow the user to Register with error handling
 ![Uploading image.png…]()
 69. Allow the users to login and check if they are signed in or not
 ![Uploading image.png…]()
+71. Sign in With Google
+![Uploading image.png…]()
+
 
 A new Flutter project.
 
