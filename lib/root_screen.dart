@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_build_ecommerce/providers/cart_provider.dart';
-import 'package:flutter_build_ecommerce/screens/cart/cart_screen.dart';
-import 'package:flutter_build_ecommerce/screens/home_screen.dart';
-import 'package:flutter_build_ecommerce/screens/profile_screen.dart';
-import 'package:flutter_build_ecommerce/screens/search_screen.dart';
+import '/providers/cart_provider.dart';
+import '/screens/cart/cart_screen.dart';
+import '/screens/home_screen.dart';
+import '/screens/profile_screen.dart';
+import '/screens/search_screen.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 
 class RootScreen extends StatefulWidget {
+  static const routeName = '/RootScreen';
   const RootScreen({super.key});
 
   @override

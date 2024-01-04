@@ -1,18 +1,27 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_build_ecommerce/screens/inner_screens/viewed_recently.dart';
-import 'package:flutter_build_ecommerce/services/assets_manager.dart';
-import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
-import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
-import 'package:flutter_build_ecommerce/widgets/title_text.dart';
+import '/screens/inner_screens/viewed_recently.dart';
+import '/services/assets_manager.dart';
+import '/widgets/app_name_text.dart';
+import '/widgets/subtitle_text.dart';
+import '/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
+import '../services/my_app_method.dart';
 import 'auth/login.dart';
 import 'inner_screens/orders/orders_screen.dart';
 import 'inner_screens/wishlist.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +77,9 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TitleTextWidget(label: "Mak Mach"),
-                      SubtitleWidget(label: "makmachksp1122@gmail.com", ),
+                      SubtitleWidget(
+                        label: "makmachksp1122@gmail.com",
+                      ),
                     ],
                   ),
                 ],
@@ -144,21 +155,25 @@ class ProfileScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                icon: const Icon(Icons.login, color: Colors.white),
-                label: const Text(
-                  "Login",
-                  style: TextStyle(color: Colors.white),
+                icon: Icon(
+                  user == null ? Icons.login : Icons.logout,
+                  color: Colors.white,
+                ),
+                label: Text(
+                  user == null ? "Login" : "Logout",
+                  style: const TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  await Navigator.pushNamed(context, LoginScreen.routeName);
-                  // await MyAppMethods.showErrorORWarningDialog(
-                  //   context: context,
-                  //   subtitle: "Are you sure?",
-                  //   fct: () {
-                  //
-                  //   },
-                  //   isError: false,
-                  // );
+                  if (null == user) {
+                    await Navigator.pushNamed(context, LoginScreen.routeName);
+                  } else {
+                    await MyAppMethods.showErrorORWarningDialog(
+                      context: context,
+                      subtitle: "Are you sure?",
+                      fct: () async {},
+                      isError: false,
+                    );
+                  }
                 },
               ),
             ),

@@ -1,10 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_build_ecommerce/consts/my_validators.dart';
-import 'package:flutter_build_ecommerce/screens/auth/register.dart';
-import 'package:flutter_build_ecommerce/widgets/app_name_text.dart';
-import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
-import 'package:flutter_build_ecommerce/widgets/title_text.dart';
+import '/consts/my_validators.dart';
+import '/root_screen.dart';
+import '/screens/auth/register.dart';
+import '/widgets/app_name_text.dart';
+import '/widgets/subtitle_text.dart';
+import '/widgets/title_text.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../../services/my_app_method.dart';
 import '../../widgets/auth/google_btn.dart';
 import 'ForgotPasswordScreen.dart';
 
@@ -24,6 +28,8 @@ class _LoginScreenState extends State<LoginScreen> {
   late final FocusNode _passwordFocusNode;
   late final _formKey = GlobalKey<FormState>();
   bool obscureText = true;
+  bool isLoading = false;
+  final auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -49,7 +55,42 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _loginFct() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
-    if (isValid) {}
+    if (isValid) {
+      _formKey.currentState!.save();
+      try {
+        setState(() {
+          isLoading = true;
+        });
+        await auth.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
+        Fluttertoast.showToast(
+          msg: "Login Successfully",
+          toastLength: Toast.LENGTH_SHORT,
+          textColor: Colors.white,
+        );
+        if (!mounted) return;
+        await Navigator.pushReplacementNamed(context, RootScreen.routeName);
+      } on FirebaseAuthException catch (error) {
+        // if(!mounted) return;
+        await MyAppMethods.showErrorORWarningDialog(
+          context: context,
+          subtitle: "An error has been occurred ${error.message}",
+          fct: () {},
+        );
+      } catch (error) {
+        await MyAppMethods.showErrorORWarningDialog(
+          context: context,
+          subtitle: "An error has been occurred $error",
+          fct: () {},
+        );
+      } finally {
+        setState(() {
+          isLoading = false;
+        });
+      }
+    }
   }
 
   @override
