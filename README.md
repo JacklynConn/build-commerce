@@ -79,6 +79,9 @@
 ![Uploading image.png…]()
 71. Sign in With Google
 ![Uploading image.png…]()
+72. Loading manger - Display loading indicator when loading
+![Uploading image.png…]()
+
 
 
 A new Flutter project.
