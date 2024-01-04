@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/screens/loading_manager.dart';
 import '/consts/my_validators.dart';
 import '/root_screen.dart';
 import '/screens/auth/register.dart';
@@ -98,156 +99,159 @@ class _LoginScreenState extends State<LoginScreen> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const SizedBox(height: 60.0),
-                const AppNameTextWidget(fontSize: 30),
-                const SizedBox(height: 30.0),
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: TitleTextWidget(label: "Welcome Back!"),
-                ),
-                const SizedBox(height: 16.0),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        controller: _emailController,
-                        focusNode: _emailFocusNode,
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
-                          hintText: "Email address",
-                          prefixIcon: Icon(IconlyLight.message),
-                        ),
-                        validator: (value) {
-                          return MyValidators.emailValidator(value);
-                        },
-                        onFieldSubmitted: (value) {
-                          FocusScope.of(context)
-                              .requestFocus(_passwordFocusNode);
-                        },
-                      ),
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        controller: _passwordController,
-                        focusNode: _passwordFocusNode,
-                        textInputAction: TextInputAction.done,
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: obscureText,
-                        decoration: InputDecoration(
-                          hintText: "**********",
-                          prefixIcon: const Icon(IconlyLight.lock),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                obscureText = !obscureText;
-                              });
-                            },
-                            icon: Icon(obscureText
-                                ? Icons.visibility
-                                : Icons.visibility_off),
+        body: LoadingManager(
+          isLoading: isLoading,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 60.0),
+                  const AppNameTextWidget(fontSize: 30),
+                  const SizedBox(height: 30.0),
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: TitleTextWidget(label: "Welcome Back!"),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _emailController,
+                          focusNode: _emailFocusNode,
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            hintText: "Email address",
+                            prefixIcon: Icon(IconlyLight.message),
                           ),
-                        ),
-                        validator: (value) {
-                          return MyValidators.passwordValidator(value);
-                        },
-                        onFieldSubmitted: (value) {
-                          _loginFct();
-                        },
-                      ),
-                      const SizedBox(height: 16),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () async {
-                            await Navigator.pushNamed(
-                                context, ForgotPasswordScreen.routeName);
+                          validator: (value) {
+                            return MyValidators.emailValidator(value);
                           },
-                          child: const SubtitleWidget(
-                            label: "Forgot Password?",
-                            textDecoration: TextDecoration.underline,
-                            fontStyle: FontStyle.italic,
-                          ),
+                          onFieldSubmitted: (value) {
+                            FocusScope.of(context)
+                                .requestFocus(_passwordFocusNode);
+                          },
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      SizedBox(
-                        width: double.infinity,
-                        // height: 50,
-                        child: ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.all(10),
-                            backgroundColor: Colors.blue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                        const SizedBox(height: 16),
+                        TextFormField(
+                          controller: _passwordController,
+                          focusNode: _passwordFocusNode,
+                          textInputAction: TextInputAction.done,
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: obscureText,
+                          decoration: InputDecoration(
+                            hintText: "**********",
+                            prefixIcon: const Icon(IconlyLight.lock),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  obscureText = !obscureText;
+                                });
+                              },
+                              icon: Icon(obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
                             ),
                           ),
-                          icon: const Icon(Icons.login, color: Colors.white),
-                          label: const Text(
-                            "Login",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                          onPressed: () async {
+                          validator: (value) {
+                            return MyValidators.passwordValidator(value);
+                          },
+                          onFieldSubmitted: (value) {
                             _loginFct();
                           },
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      const SubtitleWidget(label: "Or"),
-                      const SizedBox(height: 16),
-                      Row(
-                        children: [
-                          const GoogleButton(),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: ElevatedButton.icon(
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.all(10),
-                                backgroundColor: Colors.blue,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                              icon: const Icon(
-                                Icons.person,
-                                color: Colors.white,
-                              ),
-                              label: const Text(
-                                "Guest",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              onPressed: () async {},
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SubtitleWidget(label: "Don't have an account?"),
-                          TextButton(
+                        const SizedBox(height: 16),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () async {
+                              await Navigator.pushNamed(
+                                  context, ForgotPasswordScreen.routeName);
+                            },
                             child: const SubtitleWidget(
-                              label: "Sign Up",
+                              label: "Forgot Password?",
                               textDecoration: TextDecoration.underline,
                               fontStyle: FontStyle.italic,
                             ),
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                  context, RegisterScreen.routeName);
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        SizedBox(
+                          width: double.infinity,
+                          // height: 50,
+                          child: ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.all(10),
+                              backgroundColor: Colors.blue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            icon: const Icon(Icons.login, color: Colors.white),
+                            label: const Text(
+                              "Login",
+                              style: TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            onPressed: () async {
+                              _loginFct();
                             },
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+                        const SizedBox(height: 16),
+                        const SubtitleWidget(label: "Or"),
+                        const SizedBox(height: 16),
+                        Row(
+                          children: [
+                            const GoogleButton(),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.all(10),
+                                  backgroundColor: Colors.blue,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                                icon: const Icon(
+                                  Icons.person,
+                                  color: Colors.white,
+                                ),
+                                label: const Text(
+                                  "Guest",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                onPressed: () async {},
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SubtitleWidget(label: "Don't have an account?"),
+                            TextButton(
+                              child: const SubtitleWidget(
+                                label: "Sign Up",
+                                textDecoration: TextDecoration.underline,
+                                fontStyle: FontStyle.italic,
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, RegisterScreen.routeName);
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
