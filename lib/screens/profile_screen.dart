@@ -170,7 +170,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     await MyAppMethods.showErrorORWarningDialog(
                       context: context,
                       subtitle: "Are you sure?",
-                      fct: () async {},
+                      fct: () async {
+                        await FirebaseAuth.instance.signOut();
+                        if (!mounted) return;
+                        await Navigator.pushNamed(
+                            context, LoginScreen.routeName);
+                      },
                       isError: false,
                     );
                   }

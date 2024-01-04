@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../../root_screen.dart';
 import '/consts/my_validators.dart';
 import '/screens/auth/login.dart';
 import '/services/my_app_method.dart';
@@ -89,6 +90,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
           toastLength: Toast.LENGTH_SHORT,
           textColor: Colors.white,
         );
+        if (!mounted) return;
+        await Navigator.pushReplacementNamed(context, RootScreen.routeName);
       } on FirebaseAuthException catch (error) {
         await MyAppMethods.showErrorORWarningDialog(
           context: context,
