@@ -74,7 +74,7 @@
 60. Finish the viewed recently product State management
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/e151b3a2-7ff8-451b-b217-75bd2959dc6c)
 68. Allow the user to Register with error handling
-![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/f4eff78a-12e8-4d8f-91be-5fa9fb1db5c6)
 69. Allow the users to login and check if they are signed in or not
 ![Uploading image.png…]()
 71. Sign in With Google
@@ -85,9 +85,8 @@
 ![Uploading image.png…]()
 74. Display the user information from the Firestore
 ![Uploading image.png…]()
-
-
-
+75. Save the user information to Firestore on Google Sign In
+![Uploading image.png…]()
 
 
 A new Flutter project.
