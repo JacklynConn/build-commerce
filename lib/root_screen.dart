@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 
 class RootScreen extends StatefulWidget {
   static const routeName = '/RootScreen';
+
   const RootScreen({super.key});
 
   @override
@@ -16,6 +17,7 @@ class RootScreen extends StatefulWidget {
 }
 
 class _RootScreenState extends State<RootScreen> {
+
   late PageController controller;
   int currentScreen = 0;
   List<Widget> screens = const [
