@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_build_ecommerce/screens/loading_manager.dart';
+import '/screens/loading_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../root_screen.dart';
 import '/consts/my_validators.dart';

@@ -193,7 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             icon: const Icon(Icons.login, color: Colors.white),
                             label: const Text(
                               "Login",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             onPressed: () async {
                               _loginFct();
@@ -224,7 +225,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   "Guest",
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  await Navigator.pushReplacementNamed(
+                                    context,
+                                    RootScreen.routeName,
+                                  );
+                                },
                               ),
                             ),
                           ],
@@ -233,7 +239,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const SubtitleWidget(label: "Don't have an account?"),
+                            const SubtitleWidget(
+                                label: "Don't have an account?"),
                             TextButton(
                               child: const SubtitleWidget(
                                 label: "Sign Up",

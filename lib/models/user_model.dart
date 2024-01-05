@@ -11,8 +11,8 @@ class UserModel with ChangeNotifier {
     required this.userName,
     required this.userImage,
     required this.userEmail,
-    required this.createdAt,
     required this.userCart,
     required this.userWish,
+    required this.createdAt,
   });
 }
