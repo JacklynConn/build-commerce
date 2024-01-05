@@ -72,7 +72,7 @@
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/0cd1197b-85bf-42e1-8122-85f46d54a1ec)
 ![image](https://github.com/JacklynConn/build-commerce/assets/148744079/ab015593-1377-41f0-9d36-ad48eba605dc)
 60. Finish the viewed recently product State management
-![Uploading image.png…]()
+![image](https://github.com/JacklynConn/build-commerce/assets/148744079/e151b3a2-7ff8-451b-b217-75bd2959dc6c)
 68. Allow the user to Register with error handling
 ![Uploading image.png…]()
 69. Allow the users to login and check if they are signed in or not
@@ -81,6 +81,9 @@
 ![Uploading image.png…]()
 72. Loading manger - Display loading indicator when loading
 ![Uploading image.png…]()
+73. Save User information to the Firebase Firestore
+![Uploading image.png…]()
+
 
 
 
