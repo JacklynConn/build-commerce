@@ -83,6 +83,9 @@
 ![Uploading image.png…]()
 73. Save User information to the Firebase Firestore
 ![Uploading image.png…]()
+74. Display the user information from the Firestore
+![Uploading image.png…]()
+
 
 
 
