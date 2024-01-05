@@ -28,61 +28,66 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Firebase.initializeApp(),
-      builder: (context, snapShot) {
-        if (snapShot.connectionState == ConnectionState.waiting) {
-          const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        } else {
-          if (snapShot.hasError) {
-            return Scaffold(
-              body: SelectableText(
-                "An error has been occurred ${snapShot.error}",
+    return MaterialApp(
+      home: FutureBuilder(
+        future: Firebase.initializeApp(),
+        builder: (context, snapShot) {
+          if (snapShot.connectionState == ConnectionState.waiting) {
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
               ),
             );
-          }
-        }
-        return MultiProvider(
-          providers: [
-            ChangeNotifierProvider(create: (_) => ThemeProvider()),
-            ChangeNotifierProvider(create: (_) => ProductProvider()),
-            ChangeNotifierProvider(create: (_) => CartProvider()),
-            ChangeNotifierProvider(create: (_) => WishlistProvider()),
-            ChangeNotifierProvider(create: (_) => ViewedProdProvider()),
-            ChangeNotifierProvider(create: (_) => UserProvider()),
-          ],
-          child: Consumer<ThemeProvider>(
-            builder: (context, themeProvider, child) {
-              return MaterialApp(
-                title: 'Show Smart AR',
-                debugShowCheckedModeBanner: false,
-                theme: Styles.themeData(
-                    isDarkTheme: themeProvider.getIsDarkTheme,
-                    context: context),
-                home: const RootScreen(),
-                routes: {
-                  ProductDetails.routeName: (context) => const ProductDetails(),
-                  WishlistScreen.routeName: (context) => const WishlistScreen(),
-                  ViewRecentlyScreen.routeName: (context) =>
-                      const ViewRecentlyScreen(),
-                  LoginScreen.routeName: (context) => const LoginScreen(),
-                  RegisterScreen.routeName: (context) => const RegisterScreen(),
-                  OrderScreenFree.routeName: (context) =>
-                      const OrderScreenFree(),
-                  ForgotPasswordScreen.routeName: (context) =>
-                      const ForgotPasswordScreen(),
-                  SearchScreen.routeName: (context) => const SearchScreen(),
-                  RootScreen.routeName: (context) => const RootScreen(),
-                },
+          } else {
+            if (snapShot.hasError) {
+              return Scaffold(
+                body: SelectableText(
+                  "An error has been occurred ${snapShot.error}",
+                ),
               );
-            },
-          ),
-        );
-      },
+            }
+          }
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_) => ThemeProvider()),
+              ChangeNotifierProvider(create: (_) => ProductProvider()),
+              ChangeNotifierProvider(create: (_) => CartProvider()),
+              ChangeNotifierProvider(create: (_) => WishlistProvider()),
+              ChangeNotifierProvider(create: (_) => ViewedProdProvider()),
+              ChangeNotifierProvider(create: (_) => UserProvider()),
+            ],
+            child: Consumer<ThemeProvider>(
+              builder: (context, themeProvider, child) {
+                return MaterialApp(
+                  title: 'Show Smart AR',
+                  debugShowCheckedModeBanner: false,
+                  theme: Styles.themeData(
+                      isDarkTheme: themeProvider.getIsDarkTheme,
+                      context: context),
+                  home: const RootScreen(),
+                  routes: {
+                    ProductDetails.routeName: (context) =>
+                        const ProductDetails(),
+                    WishlistScreen.routeName: (context) =>
+                        const WishlistScreen(),
+                    ViewRecentlyScreen.routeName: (context) =>
+                        const ViewRecentlyScreen(),
+                    LoginScreen.routeName: (context) => const LoginScreen(),
+                    RegisterScreen.routeName: (context) =>
+                        const RegisterScreen(),
+                    OrderScreenFree.routeName: (context) =>
+                        const OrderScreenFree(),
+                    ForgotPasswordScreen.routeName: (context) =>
+                        const ForgotPasswordScreen(),
+                    SearchScreen.routeName: (context) => const SearchScreen(),
+                    RootScreen.routeName: (context) => const RootScreen(),
+                  },
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

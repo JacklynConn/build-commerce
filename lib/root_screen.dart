@@ -1,4 +1,6 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import '/providers/product_provider.dart';
 import '/providers/cart_provider.dart';
 import '/screens/cart/cart_screen.dart';
 import '/screens/home_screen.dart';
@@ -17,9 +19,9 @@ class RootScreen extends StatefulWidget {
 }
 
 class _RootScreenState extends State<RootScreen> {
-
   late PageController controller;
   int currentScreen = 0;
+  bool isLoadingProds = true;
   List<Widget> screens = const [
     HomeScreen(),
     SearchScreen(),
@@ -32,6 +34,35 @@ class _RootScreenState extends State<RootScreen> {
     // TODO: implement initState
     super.initState();
     controller = PageController(initialPage: currentScreen);
+  }
+
+  Future<void> fetchFCT() async {
+    final productsProvider =
+        Provider.of<ProductProvider>(context, listen: false);
+    try {
+      Future.wait({
+        productsProvider.fetchProducts(),
+      });
+    } catch (error) {
+      // await MyAppMethods.showErrorORWarningDialog(
+      //   context: context,
+      //   subtitle: "An error has been occurred $error",
+      //   fct: () {},
+      // );
+      log(error.toString());
+    } finally {
+      setState(() {
+        isLoadingProds = false;
+      });
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (isLoadingProds) {
+      fetchFCT();
+    }
+    super.didChangeDependencies();
   }
 
   @override
