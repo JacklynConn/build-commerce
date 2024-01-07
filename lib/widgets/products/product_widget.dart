@@ -105,7 +105,8 @@ class _ProductWidgetState extends State<ProductWidget> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   cartProvider.isProductInCart(
-                                          productId: getCurrProduct.productId)
+                                    productId: getCurrProduct.productId,
+                                  )
                                       ? Icons.check
                                       : Icons.add_shopping_cart_rounded,
                                   size: 20,
