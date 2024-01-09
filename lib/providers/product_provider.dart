@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 import '../models/product_model.dart';
 
 class ProductProvider with ChangeNotifier {
@@ -40,7 +39,7 @@ class ProductProvider with ChangeNotifier {
 
   Future<List<ProductModel>> fetchProducts() async {
     try {
-      await productDB.get().then((productsSnapshot) {
+      await productDB.orderBy("createdAt", descending: false).get().then((productsSnapshot) {
         _products.clear();
         for (var element in productsSnapshot.docs) {
           _products.insert(0, ProductModel.fromFirestore(element));
