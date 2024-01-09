@@ -33,22 +33,23 @@ class _RootScreenState extends State<RootScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    controller = PageController(initialPage: currentScreen);
+    controller = PageController(
+      initialPage: currentScreen,
+    );
   }
 
   Future<void> fetchFCT() async {
     final productsProvider =
         Provider.of<ProductProvider>(context, listen: false);
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
     try {
       Future.wait({
         productsProvider.fetchProducts(),
       });
+      Future.wait({
+        cartProvider.fetchCart(),
+      });
     } catch (error) {
-      // await MyAppMethods.showErrorORWarningDialog(
-      //   context: context,
-      //   subtitle: "An error has been occurred $error",
-      //   fct: () {},
-      // );
       log(error.toString());
     } finally {
       setState(() {
@@ -67,7 +68,7 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context);
+    // final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       body: PageView(
         controller: controller,
@@ -83,26 +84,34 @@ class _RootScreenState extends State<RootScreen> {
           setState(() {
             currentScreen = index;
           });
-          controller.jumpToPage(index);
+          controller.jumpToPage(currentScreen);
         },
         destinations: [
           const NavigationDestination(
+            selectedIcon: Icon(IconlyBold.home),
             icon: Icon(IconlyLight.home),
             label: 'Home',
           ),
           const NavigationDestination(
+            selectedIcon: Icon(IconlyBold.search),
             icon: Icon(IconlyLight.search),
             label: 'Search',
           ),
           NavigationDestination(
-            icon: Badge(
-              backgroundColor: Colors.blue,
-              label: Text("${cartProvider.getCartItems.length}"),
-              child: const Icon(IconlyLight.bag2),
+            selectedIcon: const Icon(IconlyBold.bag2),
+            icon: Consumer<CartProvider>(
+              builder: (context, cartProvider, child) {
+                return Badge(
+                  backgroundColor: Colors.blue,
+                  label: Text(cartProvider.getCartItems.length.toString()),
+                  child: const Icon(IconlyLight.bag2),
+                );
+              },
             ),
-            label: 'Cart',
+            label: "Cart",
           ),
           const NavigationDestination(
+            selectedIcon: Icon(IconlyBold.profile),
             icon: Icon(IconlyLight.profile),
             label: 'Profile',
           ),

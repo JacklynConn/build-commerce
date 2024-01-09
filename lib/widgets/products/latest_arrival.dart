@@ -1,11 +1,12 @@
-
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_build_ecommerce/providers/viewed_prod_provider.dart';
-import 'package:flutter_build_ecommerce/screens/inner_screens/product_details.dart';
-import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
+import '/providers/viewed_prod_provider.dart';
+import '/screens/inner_screens/product_details.dart';
+import '/widgets/products/heart_btn.dart';
 import 'package:provider/provider.dart';
 import '../../models/product_model.dart';
+import '../../providers/cart_provider.dart';
+import '../../services/my_app_method.dart';
 import '../subtitle_text.dart';
 
 class LatestArrivalProductsWidget extends StatelessWidget {
@@ -15,8 +16,12 @@ class LatestArrivalProductsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final productModel = Provider.of<ProductModel>(context);
     final viewedProvider = Provider.of<ViewedProdProvider>(context);
+    // Cart Provider
+    final cartProvider = Provider.of<CartProvider>(context);
 
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery
+        .of(context)
+        .size;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
@@ -57,9 +62,33 @@ class LatestArrivalProductsWidget extends StatelessWidget {
                         children: [
                           HeartButtonWidget(productId: productModel.productId),
                           IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.add_shopping_cart_rounded,
+                            onPressed: () async {
+                              if (cartProvider.isProductInCart(
+                                  productId: productModel.productId)) {
+                                return;
+                              }
+                              // cartProvider.addProductToCart(
+                              //   productId: getCurrProduct.productId,
+                              // );
+                              try {
+                                await cartProvider.addToCartFirebase(
+                                  productId: productModel.productId,
+                                  qty: 1,
+                                  context: context,
+                                );
+                              } catch (e) {
+                                MyAppMethods.showErrorORWarningDialog(
+                                  context: context,
+                                  subtitle: e.toString(),
+                                  fct: () {},
+                                );
+                              }
+                            },
+                            icon: Icon(
+                              cartProvider.isProductInCart(
+                                  productId: productModel.productId)
+                                  ? Icons.check
+                                  : Icons.add_shopping_cart_rounded,
                               size: 18,
                             ),
                           ),

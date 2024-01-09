@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../providers/cart_provider.dart';
 import '../../providers/product_provider.dart';
+import '../../services/my_app_method.dart';
 import '../../widgets/app_name_text.dart';
 import '../../widgets/subtitle_text.dart';
 import '../../widgets/title_text.dart';
@@ -100,15 +101,36 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         borderRadius: BorderRadius.circular(30),
                                       ),
                                     ),
-                                    onPressed: () {
+                                    onPressed: () async {
                                       if (cartProvider.isProductInCart(
                                           productId:
                                               getCurrProduct.productId)) {
                                         return;
                                       }
-                                      cartProvider.addProductToCart(
-                                        productId: getCurrProduct.productId,
-                                      );
+                                      // cartProvider.addProductToCart(
+                                      //   productId: getCurrProduct.productId,
+                                      // );
+                                      try {
+                                        await cartProvider.addToCartFirebase(
+                                          productId: getCurrProduct.productId,
+                                          qty: 1,
+                                          context: context,
+                                        );
+                                      } catch (e) {
+                                        MyAppMethods.showErrorORWarningDialog(
+                                          context: context,
+                                          subtitle: e.toString(),
+                                          fct: () {},
+                                        );
+                                      }
+                                      // if (cartProvider.isProductInCart(
+                                      //     productId:
+                                      //         getCurrProduct.productId)) {
+                                      //   return;
+                                      // }
+                                      // cartProvider.addProductToCart(
+                                      //   productId: getCurrProduct.productId,
+                                      // );
                                     },
                                     icon: Icon(
                                       cartProvider.isProductInCart(
@@ -124,7 +146,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                       )
                                           ? "In cart"
                                           : "Add to cart",
-                                      style: const TextStyle(color: Colors.white),
+                                      style:
+                                          const TextStyle(color: Colors.white),
                                     ),
                                   ),
                                 ),

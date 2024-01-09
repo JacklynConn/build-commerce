@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,7 +18,7 @@ class CartProvider with ChangeNotifier {
   }
 
   // Firebase
-  final productDB = FirebaseFirestore.instance.collection("users");
+  final usersDB = FirebaseFirestore.instance.collection("users");
   final _auth = FirebaseAuth.instance;
 
   Future<void> addToCartFirebase(
@@ -32,7 +34,7 @@ class CartProvider with ChangeNotifier {
     final uid = user.uid;
     final cartId = const Uuid().v4();
     try {
-      productDB.doc(uid).update({
+      usersDB.doc(uid).update({
         'userCart': FieldValue.arrayUnion([
           {
             'cartId': cartId,
@@ -41,12 +43,43 @@ class CartProvider with ChangeNotifier {
           }
         ])
       });
+      await fetchCart();
       Fluttertoast.showToast(msg: "Item has been added to cart");
     } catch (e) {
       rethrow;
     }
   }
 
+  Future<void> fetchCart() async {
+    User? user = _auth.currentUser;
+    if (user == null) {
+      log("The function has been called but and the user is null");
+      _cartItems.clear();
+    }
+    try {
+      final userDoc = await usersDB.doc(user!.uid).get();
+      final data = userDoc.data();
+      if (data == null || !data.containsKey('userCart')) {
+        return;
+      }
+      final leng = userDoc.get('userCart').length;
+      for (var index = 0; index < leng; index++) {
+        _cartItems.putIfAbsent(
+          userDoc.get('userCart')[index]['productId'],
+          () => CartModel(
+            cartId: userDoc.get('userCart')[index]['cartId'],
+            productId: userDoc.get('userCart')[index]['productId'],
+            quantity: userDoc.get('userCart')[index]['quantity'],
+          ),
+        );
+      }
+    } catch (e) {
+      rethrow;
+    }
+    notifyListeners();
+  }
+
+  // Local
   bool isProductInCart({required String productId}) {
     return _cartItems.containsKey(productId);
   }

@@ -55,9 +55,7 @@ class _SearchScreenState extends State<SearchScreen> {
           // ),
         ),
         body: productsList.isEmpty
-            ? const Center(
-                child: TitleTextWidget(label: "No product found"),
-              )
+            ? const Center(child: TitleTextWidget(label: "No product found"))
             : StreamBuilder<List<ProductModel>>(
                 stream: productProvider.fetchProductsStream(),
                 builder: (context, snapshot) {
@@ -126,10 +124,11 @@ class _SearchScreenState extends State<SearchScreen> {
                         if (searchTextController.text.isNotEmpty &&
                             productListSearch.isEmpty) ...[
                           const Center(
-                              child: TitleTextWidget(
-                            label: "No result found",
-                            fontSize: 40,
-                          ))
+                            child: TitleTextWidget(
+                              label: "No result found",
+                              fontSize: 40,
+                            ),
+                          ),
                         ],
                         Expanded(
                           child: DynamicHeightGridView(
@@ -155,7 +154,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       ],
                     ),
                   );
-                }),
+                },
+              ),
       ),
     );
   }
