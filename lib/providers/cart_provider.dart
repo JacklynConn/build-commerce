@@ -1,11 +1,10 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_build_ecommerce/models/product_model.dart';
-import 'package:flutter_build_ecommerce/providers/product_provider.dart';
-import 'package:flutter_build_ecommerce/services/my_app_method.dart';
+import '/models/product_model.dart';
+import '/providers/product_provider.dart';
+import '/services/my_app_method.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:uuid/uuid.dart';
 import '../models/cart_model.dart';
@@ -58,9 +57,10 @@ class CartProvider with ChangeNotifier {
     if (user == null) {
       log("The function has been called but and the user is null");
       _cartItems.clear();
+      return;
     }
     try {
-      final userDoc = await usersDB.doc(user!.uid).get();
+      final userDoc = await usersDB.doc(user.uid).get();
       final data = userDoc.data();
       if (data == null || !data.containsKey('userCart')) {
         return;

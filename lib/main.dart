@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: FutureBuilder(
         future: Firebase.initializeApp(),
         builder: (context, snapShot) {
@@ -59,8 +60,8 @@ class MyApp extends StatelessWidget {
             child: Consumer<ThemeProvider>(
               builder: (context, themeProvider, child) {
                 return MaterialApp(
-                  title: 'Show Smart AR',
                   debugShowCheckedModeBanner: false,
+                  title: 'Show Smart AR',
                   theme: Styles.themeData(
                       isDarkTheme: themeProvider.getIsDarkTheme,
                       context: context),

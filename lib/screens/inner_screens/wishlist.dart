@@ -42,7 +42,8 @@ class WishlistScreen extends StatelessWidget {
                         isError: false,
                         context: context,
                         subtitle: "Remove Items",
-                        fct: () {
+                        fct: () async {
+                          await wishlistProvider.clearWishlistFromFirebase();
                           wishlistProvider.clearLocalWishlist();
                         });
                   },
