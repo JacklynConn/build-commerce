@@ -2,6 +2,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/providers/cart_provider.dart';
 import 'package:flutter_build_ecommerce/providers/product_provider.dart';
+import 'package:flutter_build_ecommerce/services/my_app_method.dart';
 import 'package:flutter_build_ecommerce/widgets/products/heart_btn.dart';
 import 'package:flutter_build_ecommerce/widgets/subtitle_text.dart';
 import 'package:flutter_build_ecommerce/widgets/title_text.dart';
@@ -92,14 +93,27 @@ class _ProductWidgetState extends State<ProductWidget> {
                             child: InkWell(
                               borderRadius: BorderRadius.circular(16.0),
                               splashColor: Colors.red,
-                              onTap: () {
+                              onTap: () async {
                                 if (cartProvider.isProductInCart(
                                     productId: getCurrProduct.productId)) {
                                   return;
                                 }
-                                cartProvider.addProductToCart(
-                                  productId: getCurrProduct.productId,
-                                );
+                                // cartProvider.addProductToCart(
+                                //   productId: getCurrProduct.productId,
+                                // );
+                                try {
+                                  await cartProvider.addToCartFirebase(
+                                    productId: getCurrProduct.productId,
+                                    qty: 1,
+                                    context: context,
+                                  );
+                                } catch (e) {
+                                  MyAppMethods.showErrorORWarningDialog(
+                                    context: context,
+                                    subtitle: e.toString(),
+                                    fct: () {},
+                                  );
+                                }
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),

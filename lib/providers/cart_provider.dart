@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_build_ecommerce/models/product_model.dart';
 import 'package:flutter_build_ecommerce/providers/product_provider.dart';
+import 'package:flutter_build_ecommerce/services/my_app_method.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:uuid/uuid.dart';
 import '../models/cart_model.dart';
 
@@ -9,6 +13,38 @@ class CartProvider with ChangeNotifier {
 
   Map<String, CartModel> get getCartItems {
     return _cartItems;
+  }
+
+  // Firebase
+  final productDB = FirebaseFirestore.instance.collection("users");
+  final _auth = FirebaseAuth.instance;
+
+  Future<void> addToCartFirebase(
+      {required String productId,
+      required int qty,
+      required BuildContext context}) async {
+    final User? user = _auth.currentUser;
+    if (user == null) {
+      MyAppMethods.showErrorORWarningDialog(
+          context: context, subtitle: "No user found", fct: () {});
+      return;
+    }
+    final uid = user.uid;
+    final cartId = const Uuid().v4();
+    try {
+      productDB.doc(uid).update({
+        'userCart': FieldValue.arrayUnion([
+          {
+            'cartId': cartId,
+            'productId': productId,
+            'quantity': qty,
+          }
+        ])
+      });
+      Fluttertoast.showToast(msg: "Item has been added to cart");
+    } catch (e) {
+      rethrow;
+    }
   }
 
   bool isProductInCart({required String productId}) {
