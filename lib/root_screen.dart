@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter_build_ecommerce/providers/user_provider.dart';
 import 'package:flutter_build_ecommerce/providers/wishlist_provider.dart';
 import '/providers/product_provider.dart';
 import '/providers/cart_provider.dart';
@@ -45,9 +46,11 @@ class _RootScreenState extends State<RootScreen> {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     final wishlistProvider =
         Provider.of<WishlistProvider>(context, listen: false);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
     try {
       Future.wait({
         productsProvider.fetchProducts(),
+        userProvider.fetchUserInfo(),
       });
       Future.wait({
         cartProvider.fetchCart(),

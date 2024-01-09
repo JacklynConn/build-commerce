@@ -7,7 +7,9 @@ import '../../providers/cart_provider.dart';
 import '../../providers/product_provider.dart';
 
 class CartBottomCheckOut extends StatelessWidget {
-  const CartBottomCheckOut({super.key});
+  const CartBottomCheckOut({super.key, required this.function});
+
+  final Function function;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,9 @@ class CartBottomCheckOut extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await function();
+                },
                 child: const Text(
                   "Checkout",
                   style: TextStyle(color: Colors.white),
