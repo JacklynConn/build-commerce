@@ -41,11 +41,12 @@ class CartScreen extends StatelessWidget {
                 IconButton(
                   onPressed: () {
                     MyAppMethods.showErrorORWarningDialog(
-                      isError: false,
+                        isError: false,
                         context: context,
                         subtitle: "Remove items",
-                        fct: () {
-                          cartProvider.clearLocalCart();
+                        fct: () async{
+                          // cartProvider.clearLocalCart();
+                         await cartProvider.clearCartFromFirebase();
                         });
                   },
                   icon: const Icon(

@@ -28,7 +28,10 @@ class CartProvider with ChangeNotifier {
     final User? user = _auth.currentUser;
     if (user == null) {
       MyAppMethods.showErrorORWarningDialog(
-          context: context, subtitle: "No user found", fct: () {});
+        context: context,
+        subtitle: "No user found",
+        fct: () {},
+      );
       return;
     }
     final uid = user.uid;
@@ -41,7 +44,7 @@ class CartProvider with ChangeNotifier {
             'productId': productId,
             'quantity': qty,
           }
-        ])
+        ]),
       });
       await fetchCart();
       Fluttertoast.showToast(msg: "Item has been added to cart");
@@ -73,6 +76,42 @@ class CartProvider with ChangeNotifier {
           ),
         );
       }
+    } catch (e) {
+      rethrow;
+    }
+    notifyListeners();
+  }
+
+  Future<void> removeCartItemFromFirebase(
+      {required String cartId,
+      required String productId,
+      required int qty}) async {
+    User? user = _auth.currentUser;
+    try {
+      await usersDB.doc(user!.uid).update({
+        'userCart': FieldValue.arrayRemove([
+          {
+            'cartId': cartId,
+            'productId': productId,
+            'quantity': qty,
+          }
+        ]),
+      });
+      _cartItems.remove(productId);
+      await fetchCart();
+    } catch (e) {
+      rethrow;
+    }
+    notifyListeners();
+  }
+
+  Future<void> clearCartFromFirebase() async {
+    User? user = _auth.currentUser;
+    try {
+      await usersDB.doc(user!.uid).update({
+        'userCart': [],
+      });
+      _cartItems.clear();
     } catch (e) {
       rethrow;
     }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_build_ecommerce/screens/cart/quantity_btm_sheet.dart';
@@ -53,19 +55,29 @@ class CartWidget extends StatelessWidget {
                               Column(
                                 children: [
                                   IconButton(
-                                    onPressed: () {
-                                      cartProvider.removeItem(
-                                        productId: getCurrProduct.productId,
-                                      );
+                                    onPressed: () async {
+                                      try {
+                                        await cartProvider
+                                            .removeCartItemFromFirebase(
+                                          cartId: cartModelProvider.cartId,
+                                          productId: getCurrProduct.productId,
+                                          qty: cartModelProvider.quantity,
+                                        );
+                                      } catch (e) {
+                                        log(e.toString());
+                                      }
+                                      // cartProvider.removeItem(
+                                      //   productId: getCurrProduct.productId,
+                                      // );
                                     },
                                     icon: const Icon(
                                       Icons.clear,
                                       color: Colors.red,
                                     ),
                                   ),
-                                   HeartButtonWidget(
+                                  HeartButtonWidget(
                                     productId: getCurrProduct.productId,
-                                   ),
+                                  ),
                                 ],
                               ),
                             ],
