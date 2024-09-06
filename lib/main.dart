@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_build_ecommerce/providers/user_provider.dart';
+import '/providers/order_provider.dart';
+import '/providers/user_provider.dart';
 import '/providers/cart_provider.dart';
 import '/providers/product_provider.dart';
 import '/providers/viewed_prod_provider.dart';
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
               ChangeNotifierProvider(create: (_) => WishlistProvider()),
               ChangeNotifierProvider(create: (_) => ViewedProdProvider()),
               ChangeNotifierProvider(create: (_) => UserProvider()),
+              ChangeNotifierProvider(create: (_) => OrdersProvider()),
             ],
             child: Consumer<ThemeProvider>(
               builder: (context, themeProvider, child) {
