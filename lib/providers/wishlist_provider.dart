@@ -78,7 +78,6 @@ class WishlistProvider with ChangeNotifier {
     } catch (e) {
       rethrow;
     }
-    notifyListeners();
   }
 
   Future<void> removeWishlistItemFromFirebase({

@@ -11,15 +11,18 @@ class GoogleButton extends StatelessWidget {
 
   Future<void> _googleSignIn({required BuildContext context}) async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser!.authentication;
-      final authResults = await FirebaseAuth.instance.signInWithCredential(
-        GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        ),
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+      if (googleSignInAccount == null) return;
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+      final AuthCredential authCredential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
       );
+      final UserCredential authResults =
+          await FirebaseAuth.instance.signInWithCredential(authCredential);
       if (authResults.additionalUserInfo!.isNewUser) {
         await FirebaseFirestore.instance
             .collection("users")

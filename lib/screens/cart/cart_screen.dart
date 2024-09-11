@@ -38,7 +38,7 @@ class _CartScreenState extends State<CartScreen> {
               title: "Your cart is empty",
               subtitle:
                   "Looks like you didn't add anything to your cart \ngo ahead and start shopping now",
-              buttonText: "Shopp now",
+              buttonText: "Shop now",
             ),
           )
         : Scaffold(
